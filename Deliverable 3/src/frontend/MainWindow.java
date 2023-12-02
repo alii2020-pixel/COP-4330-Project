@@ -4,8 +4,6 @@
 
 package frontend;
 
-import java.awt.Color;
-
 import javax.swing.*;
 import frontend.Login.LoginView;
 
