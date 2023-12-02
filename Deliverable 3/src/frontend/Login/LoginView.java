@@ -3,6 +3,7 @@
 
 package frontend.Login;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -13,27 +14,52 @@ public class LoginView extends JComponent {
 	private JButton signUpButton;
 	
 	public LoginView() {
-		usernameField = new JTextField();
-		passwordField = new JPasswordField();
-		loginButton = new JButton("Login");
-		signUpButton = new JButton("Sign up");
-		
-		JPanel panel = new JPanel();
-		panel.add(usernameField);
-		panel.add(passwordField);
-		panel.add(loginButton);
-		panel.add(signUpButton);
-		
-		this.add(panel);
+        usernameField = new JTextField(20);
+        passwordField = new JPasswordField(20);
+        loginButton = new JButton("Login");
+        signUpButton = new JButton("Sign up");
+
+        JPanel inputPanel = new JPanel(new GridLayout(0, 2, 5, 5)); // 0 rows for variable number of components
+        inputPanel.add(new JLabel("Username:"));
+        inputPanel.add(usernameField);
+        inputPanel.add(new JLabel("Password:"));
+        inputPanel.add(passwordField);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(loginButton);
+        buttonPanel.add(signUpButton);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setPreferredSize(new Dimension(300, 150)); // Set preferred size
+
+        mainPanel.add(inputPanel, BorderLayout.CENTER);
+        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        this.setLayout(new GridBagLayout()); // Use GridBagLayout for LoginView
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = gbc.gridy = 0;
+        gbc.weightx = gbc.weighty = 1;
+        gbc.fill = GridBagConstraints.BOTH; // Fill available space
+        this.add(mainPanel, gbc);
 	}
 	
 	/**
 	 * Displays a login failure window when a user fails to log in.
 	 * This creates a new window that the user will close once they read it.
-	 * TODO: IMPLEMENT
+	 * 
+	 * @param failureMessage Message to show on the frame.
 	 */
-	public void displayLoginFailure() {
-		throw new UnsupportedOperationException();
+	public void displayLoginFailure(String failureMessage) {
+		JFrame failureFrame = new JFrame("Login failed!");
+		failureFrame.setSize(300, 240);
+		failureFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		failureFrame.setVisible(true);
+		
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel(failureMessage);
+		panel.add(label);
+		failureFrame.add(panel);
 	}
 
 	/**

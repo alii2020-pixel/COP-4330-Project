@@ -4,7 +4,10 @@
 
 package frontend;
 
+import java.awt.Color;
+
 import javax.swing.*;
+import frontend.Login.LoginView;
 
 public class MainWindow {
 	public static JFrame windowFrame;
@@ -15,8 +18,11 @@ public class MainWindow {
 		windowFrame = new JFrame("CartSafari");
 		windowFrame.setSize(1200, 720);
 		windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		windowFrame.setVisible(true);
 		
 		// Add login window
+		LoginView loginView = new LoginView();
+		
+		windowFrame.add(loginView);
+		windowFrame.setVisible(true);
 	}
 }
