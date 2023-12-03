@@ -78,19 +78,35 @@ public class LoginView extends JComponent {
 		throw new UnsupportedOperationException();
 	}
 	
-	public void setUsernameFieldListener(ActionListener listener) {
-		usernameField.addActionListener(listener);
+	/**
+	 * Returns the entered username.
+	 * @return The username in the username field.
+	 */
+	public String getUsername() {
+		return usernameField.getText();
 	}
 	
-	public void setPasswordFieldListener(ActionListener listener) {
-		passwordField.addActionListener(listener);
+	/**
+	 * Returns the entered password.
+	 * @return The password in the password field.
+	 */
+	public String getPassword() {
+		return new String(passwordField.getPassword());
 	}
 	
-	public void setLoginButtonListener(ActionListener listener) {
+	/**
+	 * Adds an ActionListener to the login button.
+	 * @param listener Listener to add to the sign up button.
+	 */
+	public void addLoginButtonListener(ActionListener listener) {
 		loginButton.addActionListener(listener);
 	}
 	
-	public void setSignUpButtonListener(ActionListener listener) {
+	/**
+	 * Adds an ActionListener to the sign up button.
+	 * @param listener Listener to add to the sign up button.
+	 */
+	public void addSignUpButtonListener(ActionListener listener) {
 		signUpButton.addActionListener(listener);
 	}
 }

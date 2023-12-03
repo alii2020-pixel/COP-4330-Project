@@ -27,7 +27,7 @@ public class MainWindow {
 		windowFrame.setVisible(true);
 	}
 	
-	public static void changeView(Object model, JComponent view, Object controller) {
+	public static void changeMVC(Object model, JComponent view, Object controller) {
 		MainWindow.model = model;
 		MainWindow.controller = controller;
 		
