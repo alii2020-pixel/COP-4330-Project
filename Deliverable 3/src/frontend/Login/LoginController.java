@@ -20,6 +20,8 @@ public class LoginController {
 			.whenComplete((verified, throwable) -> {
 				SwingUtilities.invokeLater(() -> {
 					if (verified) {
+						System.out.println("Successfully logged in!");
+						
 						// TODO:
 						//	- Create LogoutWrapper
 						//	- Get user type from Model, then create either:
@@ -27,6 +29,7 @@ public class LoginController {
 						//		- MainScreenSeller
 						//	- Switch window using MainWindow.changeMVC
 					} else {
+						System.out.println("Failed to login!");
 						view.displayLoginFailure(throwable.toString());
 					}
 					view.hideBuffering();

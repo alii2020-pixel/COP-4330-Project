@@ -5,34 +5,46 @@
 package frontend;
 
 import javax.swing.*;
-import frontend.Login.LoginView;
+import frontend.Login.*;
 
-public class MainWindow {
-	public static JFrame windowFrame;
+public class MainWindow implements IWrapper {
+	private JFrame windowFrame;
+	private Object model, controller;
+	private JComponent view;
 	
-	private static Object model, controller;
-	private static JComponent view;
+	public static MainWindow Instance;
 	
-	private MainWindow() { } // do not allow construction
-	
-	public static void main(String[] args) {
+	private MainWindow() {
 		windowFrame = new JFrame("CartSafari");
 		windowFrame.setSize(1200, 720);
 		windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Add login window
+		LoginModel loginModel = new LoginModel();
 		LoginView loginView = new LoginView();
+		LoginController loginController = new LoginController(loginModel, loginView);
 		
-		windowFrame.add(loginView);
-		windowFrame.setVisible(true);
+		changeMVC(loginModel, loginView, loginController);
 	}
 	
-	public static void changeMVC(Object model, JComponent view, Object controller) {
-		MainWindow.model = model;
-		MainWindow.controller = controller;
+	public static void main(String[] args) {
+		Instance = new MainWindow();
+	}
+	
+	/**
+	 * Changes the current MVC to another MVC. 
+	 * Removes the old MVC from memory (unless stored elsewhere).
+	 * @param model The new Model component.
+	 * @param view The new View component; must be a subclass of JComponent.
+	 * @param controller The new Controller component.
+	 */
+	public void changeMVC(Object model, JComponent view, Object controller) {
+		this.model = model;
+		this.controller = controller;
 		
-		windowFrame.remove(MainWindow.view);
-		MainWindow.view = view;
+		if (this.view != null)
+			windowFrame.remove(this.view);
+		this.view = view;
 		windowFrame.add(view);
 		windowFrame.setVisible(true);
 	}

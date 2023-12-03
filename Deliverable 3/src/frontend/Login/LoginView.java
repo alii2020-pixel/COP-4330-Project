@@ -13,6 +13,9 @@ public class LoginView extends JComponent {
 	private JButton loginButton;
 	private JButton signUpButton;
 	
+	// for buffering symbol
+	private JProgressBar progressBar;
+	
 	public LoginView() {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
@@ -67,7 +70,21 @@ public class LoginView extends JComponent {
 	 * TODO: IMPLEMENT
 	 */
 	public void showBuffering() {
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		progressBar = new JProgressBar();
+		progressBar.setIndeterminate(true);
+		progressBar.setString("Attempting to login...");
+		progressBar.setStringPainted(true);
+		progressBar.setPreferredSize(new Dimension(200, 30));
+		
+        int x = (this.getWidth() - progressBar.getPreferredSize().width) / 2;
+        int y = (this.getHeight() - progressBar.getPreferredSize().height) / 2;
+        
+        // Set the position of the progress bar
+        progressBar.setBounds(x, y, progressBar.getPreferredSize().width, progressBar.getPreferredSize().height);
+        this.add(progressBar);
+        
+        this.setVisible(true);
 	}
 	
 	/**
@@ -75,7 +92,10 @@ public class LoginView extends JComponent {
 	 * TODO: IMPLEMENT
 	 */
 	public void hideBuffering() {
-		throw new UnsupportedOperationException();
+		this.remove(progressBar);
+		this.setVisible(true);
+		this.revalidate();
+		this.repaint();
 	}
 	
 	/**
