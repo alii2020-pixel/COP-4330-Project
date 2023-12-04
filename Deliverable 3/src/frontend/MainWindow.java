@@ -12,7 +12,7 @@ public class MainWindow implements IWrapper {
 	private Object model, controller;
 	private JComponent view;
 	
-	public static MainWindow Instance;
+	public static MainWindow Instance; // Singleton pattern
 	
 	private MainWindow() {
 		windowFrame = new JFrame("CartSafari");
@@ -47,5 +47,7 @@ public class MainWindow implements IWrapper {
 		this.view = view;
 		windowFrame.add(view);
 		windowFrame.setVisible(true);
+		windowFrame.revalidate();
+		windowFrame.repaint();
 	}
 }
