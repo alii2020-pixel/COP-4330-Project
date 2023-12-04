@@ -16,6 +16,9 @@ public class LoginView extends JComponent {
 	// for buffering symbol
 	private JProgressBar progressBar;
 	
+	// for login failure window
+	private JFrame failureFrame;
+	
 	public LoginView() {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
@@ -54,15 +57,28 @@ public class LoginView extends JComponent {
 	 * @param failureMessage Message to show on the frame.
 	 */
 	public void displayLoginFailure(String failureMessage) {
-		JFrame failureFrame = new JFrame("Login failed!");
-		failureFrame.setSize(300, 240);
-		failureFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		failureFrame.setVisible(true);
-		
-		JPanel panel = new JPanel();
-		JLabel label = new JLabel(failureMessage);
-		panel.add(label);
-		failureFrame.add(panel);
+	    if (failureFrame != null) {
+	        failureFrame.dispose();
+	    }
+
+	    failureFrame = new JFrame("Login failed!");
+	    failureFrame.setSize(200, 120);
+	    failureFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+	    JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	    JLabel label = new JLabel(failureMessage);
+	    label.setFont(label.getFont().deriveFont(Font.PLAIN, 18f));
+	    label.setHorizontalAlignment(JLabel.CENTER);
+	    panel.add(label);
+
+	    Box verticalBox = Box.createVerticalBox();
+	    verticalBox.add(Box.createVerticalGlue()); // Add glue to center vertically
+	    verticalBox.add(panel);
+	    verticalBox.add(Box.createVerticalGlue()); // Add additional glue for spacing
+
+	    failureFrame.add(verticalBox, BorderLayout.CENTER);
+
+	    failureFrame.setVisible(true);
 	}
 
 	/**

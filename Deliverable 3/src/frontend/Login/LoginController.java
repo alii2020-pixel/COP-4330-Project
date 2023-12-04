@@ -30,7 +30,10 @@ public class LoginController {
 						//	- Switch window using MainWindow.changeMVC
 					} else {
 						System.out.println("Failed to login!");
-						view.displayLoginFailure(throwable.toString());
+						if (throwable != null)
+							view.displayLoginFailure(throwable.toString());
+						else 
+							view.displayLoginFailure("Failed to login!");
 					}
 					view.hideBuffering();
 				});
@@ -38,6 +41,6 @@ public class LoginController {
 	}
 	
 	private void onSignUpButtonClick() {
-		
+		// navigate to SignUpView
 	}
 }
