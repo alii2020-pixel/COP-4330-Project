@@ -18,6 +18,7 @@ public class MainWindow implements IWrapper {
 		windowFrame = new JFrame("CartSafari");
 		windowFrame.setSize(1200, 720);
 		windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		windowFrame.setVisible(true);
 		
 		// Add login window
 		LoginModel loginModel = new LoginModel();
@@ -35,7 +36,7 @@ public class MainWindow implements IWrapper {
 	 * Changes the current MVC to another MVC. 
 	 * Removes the old MVC from memory (unless stored elsewhere).
 	 * @param model The new Model component.
-	 * @param view The new View component; must be a subclass of JComponent.
+	 * @param view The new View component (inherited from JComponent).
 	 * @param controller The new Controller component.
 	 */
 	public void changeMVC(Object model, JComponent view, Object controller) {
@@ -46,7 +47,6 @@ public class MainWindow implements IWrapper {
 			windowFrame.remove(this.view);
 		this.view = view;
 		windowFrame.add(view);
-		windowFrame.setVisible(true);
 		windowFrame.revalidate();
 		windowFrame.repaint();
 	}

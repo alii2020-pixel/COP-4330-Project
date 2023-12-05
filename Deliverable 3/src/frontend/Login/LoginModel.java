@@ -19,17 +19,32 @@ public class LoginModel {
 	 *           implementation to connect to a server and verify the provided username and password.
 	 *           The completion of the CompletableFuture indicates the result of the verification process.
 	 */
-	public CompletableFuture<Boolean> verifyCredentials(String username, String password) {
+	public CompletableFuture<VerifyCredentialsResponse> verifyCredentials(String username, String password) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 // Simulating a delay for connection and verification
                 Thread.sleep(2000);
-                return false;
+                return new VerifyCredentialsResponse(true, UserType.Customer);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                return false;
+                return new VerifyCredentialsResponse(false, UserType.None);
             }
         });
     }
+	
+	public enum UserType {
+		None,
+		Customer,
+		Seller
+	}
 
+	public class VerifyCredentialsResponse {
+		public boolean verified;
+		public UserType userType;
+		
+		public VerifyCredentialsResponse(boolean verified, UserType userType) {
+			this.verified = verified;
+			this.userType = userType;
+		}
+	}
 }
