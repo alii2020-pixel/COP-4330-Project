@@ -1,5 +1,7 @@
-package frontend.MainScreenCustomer;
+// package frontend.MainScreenCustomer;
 
-public class MainScreenCustomerModel {
+// public class MainScreenCustomerModel {
 
-}
+// }
+
+
