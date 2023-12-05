@@ -1,8 +1,8 @@
 package frontend.Product;
 
-// import javax.swing.JComponent;
+//  import javax.swing.JComponent;
 
-// public class ProductView extends JComponent {
+//  public class ProductView extends JComponent {
 
 // }
 
