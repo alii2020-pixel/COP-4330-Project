@@ -24,7 +24,7 @@ public class LoginModel {
             try {
                 // Simulating a delay for connection and verification
                 Thread.sleep(2000);
-                return false;
+                return true;
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 return false;

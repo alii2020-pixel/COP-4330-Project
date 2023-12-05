@@ -1,3 +1,6 @@
+//LoginViewDemo.java
+//This testing class needs to be deleted (does not follow MVC architecture) - basilicon
+
 package frontend.Login;
 
 import javax.swing.*;
@@ -17,7 +20,7 @@ public class LoginViewDemo {
 
             LoginView loginView = new LoginView();
 
-            loginView.setLoginButtonListener(new ActionListener() {
+            loginView.addLoginButtonListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     loginView.displayLoginFailure("Invalid username or password");
