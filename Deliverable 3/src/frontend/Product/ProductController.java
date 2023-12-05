@@ -26,16 +26,4 @@ public class ProductController {
     public void updateView() {
         view.updateProduct(model.getProducts());
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ProductView view = new ProductView();
-                ProductModel model = new ProductModel();
-                ProductController controller = new ProductController(view, model);
-                view.setController(controller);
-            }
-        });
-    }
 }

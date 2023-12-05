@@ -1,8 +1,10 @@
 package frontend.Login;
 
 import javax.swing.SwingUtilities;
-
 import frontend.MainWindow;
+import frontend.LogoutWrapper.*;
+import frontend.MainScreenCustomer.*;
+import frontend.MainScreenSeller.*;
 import frontend.SignUp.*;
 
 public class LoginController {
@@ -20,9 +22,9 @@ public class LoginController {
 	private void onLoginButtonClick() {
 		view.showBuffering();
 		model.verifyCredentials(view.getUsername(), view.getPassword())
-			.whenComplete((verified, throwable) -> {
+			.whenComplete((response, throwable) -> {
 				SwingUtilities.invokeLater(() -> {
-					if (verified) {
+					if (response.verified) {
 						System.out.println("Successfully logged in!");
 						
 						// TODO:
@@ -31,6 +33,28 @@ public class LoginController {
 						//		- MainScreenCustomer
 						//		- MainScreenSeller
 						//	- Switch window using MainWindow.changeMVC
+						LogoutWrapperView lgwView = new LogoutWrapperView();
+						LogoutWrapperModel lgwModel = new LogoutWrapperModel();
+						LogoutWrapperController lgwController = new LogoutWrapperController(lgwView, lgwModel);
+						
+						if (response.userType == LoginModel.UserType.Customer) {
+							// Customer
+							MainScreenCustomerView mscView = new MainScreenCustomerView();
+							MainScreenCustomerModel mscModel = new MainScreenCustomerModel();
+							MainScreenCustomerController mscController = new MainScreenCustomerController(mscView, mscModel);
+							
+							LogoutWrapperView.Instance.changeMVC(mscModel, mscView, mscController);
+						} else {
+							// Seller
+							MainScreenSellerView mssView = new MainScreenSellerView();
+							MainScreenSellerModel mssModel = new MainScreenSellerModel();
+							MainScreenSellerController mssController = new MainScreenSellerController(mssView, mssModel);
+							
+							LogoutWrapperView.Instance.changeMVC(mssView, mssView, mssController);
+						}
+						
+						MainWindow.Instance.changeMVC(lgwModel, lgwView, lgwController);
+						
 					} else {
 						System.out.println("Failed to login!");
 						if (throwable != null)
