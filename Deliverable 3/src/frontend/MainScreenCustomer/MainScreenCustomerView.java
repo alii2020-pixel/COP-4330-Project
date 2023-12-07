@@ -15,16 +15,15 @@ public class MainScreenCustomerView extends JComponent {
 	
     public MainScreenCustomerView() {
     	JPanel allContainer = new JPanel();
-    	allContainer.setLayout(new BoxLayout(allContainer, BoxLayout.X_AXIS));
+    	allContainer.setLayout(new BorderLayout());
     	
-    	productContainer = new JPanel();
-    	productContainer.setLayout(new BoxLayout(productContainer, BoxLayout.Y_AXIS));
+    	productContainer = new JPanel(new GridLayout(0, 3, 10, 10));
     	
     	shoppingCartButton = new JButton("SHOPPING CART");
     	
+    	allContainer.add(shoppingCartButton, BorderLayout.NORTH);
     	allContainer.add(productContainer);
-    	allContainer.add(shoppingCartButton);
-    	
+
     	add(allContainer);
     	
     	setLayout(new FlowLayout());
