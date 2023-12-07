@@ -24,7 +24,7 @@ public class SignUpController {
 
     private void onSignUpButtonClick() {
         view.showBuffering();
-        model.register(view.getUsername(), view.getPassword())
+        model.register(view.getUsername(), view.getPassword(), view.getUserType())
             .whenComplete((response, throwable) -> {
                 SwingUtilities.invokeLater(() -> {
                     if (response.verified) {

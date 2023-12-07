@@ -1,8 +1,14 @@
+// SignUpView.java
+// Ethan Curtis
+
 package frontend.SignUp;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import common.VerifyCredentialsResponse.UserType;
 
 public class SignUpView extends JComponent {
     private JTextField usernameField;
@@ -11,19 +17,34 @@ public class SignUpView extends JComponent {
     private JButton loginButton;
     private JProgressBar progressBar;
     private JFrame failureFrame;
+    private JToggleButton userTypeButton;
 
     public SignUpView() {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
         signUpButton = new JButton("Sign up");
         loginButton = new JButton("Return to login");
+        
+        userTypeButton = new JToggleButton("Customer");
+        userTypeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (userTypeButton.isSelected()) {
+                	userTypeButton.setText("Seller");
+                } else {
+                	userTypeButton.setText("Customer");
+                }
+            }
+        });
 
         JPanel inputPanel = new JPanel(new GridLayout(0, 2, 5, 5)); //0 rows for variable number of components
         inputPanel.add(new JLabel("Username:"));
         inputPanel.add(usernameField);
         inputPanel.add(new JLabel("Password:"));
         inputPanel.add(passwordField);
-
+        inputPanel.add(new JLabel("User type:"));
+        inputPanel.add(userTypeButton);
+        
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(signUpButton);
         buttonPanel.add(loginButton);
@@ -108,6 +129,10 @@ public class SignUpView extends JComponent {
 
     public String getPassword() {
         return new String(passwordField.getPassword());
+    }
+    
+    public UserType getUserType() {
+    	return (userTypeButton.getText().equals("Customer")) ? UserType.Customer : UserType.Seller;
     }
 
     /**

@@ -45,14 +45,6 @@ public class MainScreenSellerView extends JComponent {
        
         // Set component properties
         setPreferredSize(getPreferredSize());
-       
-        // Set frame properties
-        JFrame frame = new JFrame("Main Screen - Seller");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(this);
-        frame.pack();
-        frame.setLocationRelativeTo(null);  // Center the frame on the screen
-        frame.setVisible(true);
     }
     private void showSellerInventoryScreen() {
         // Implement logic to show Seller Inventory Screen
@@ -61,9 +53,5 @@ public class MainScreenSellerView extends JComponent {
     private void showFinancialReportsScreen() {
         // Implement logic to show Financial Reports Screen
         financialReportsScreenView.setVisible(true);
-    }
-    public static void main(String[] args) {
-        // Example usage
-        new MainScreenSellerView();
     }
 }
