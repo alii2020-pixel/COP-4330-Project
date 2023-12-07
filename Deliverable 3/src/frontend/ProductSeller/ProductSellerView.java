@@ -1,7 +1,10 @@
+// ProductSellerView.java
+// Ethan Curtis
+
 package frontend.ProductSeller;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.text.DecimalFormat;
 import javax.swing.*;
 
@@ -36,6 +39,18 @@ public class ProductSellerView extends JComponent {
     	setVisible(true);
 	}
 	
+	public String getTitleFieldText() {
+		return titleField.getText();
+	}
+	
+	public String getDescriptionFieldText() {
+		return descriptionField.getText();
+	}
+	
+	public String getPriceFieldText() {
+		return priceField.getText();
+	}
+	
 	public void setTitleFieldText(String title) {
 		titleField.setText(title);
 	}
@@ -48,16 +63,16 @@ public class ProductSellerView extends JComponent {
 		priceField.setText(String.format("%.2f", price));
 	}
 
-	public void addTitleFieldListener(ActionListener listener) {
-		titleField.addActionListener(listener);
+	public void addTitleFieldListener(KeyListener listener) {
+		titleField.addKeyListener(listener);
 	}
 	
-	public void addDescriptionFieldListener(ActionListener listener) {
-		descriptionField.addActionListener(listener);
+	public void addDescriptionFieldListener(KeyListener listener) {
+		descriptionField.addKeyListener(listener);
 	}
 	
-	public void addPriceFieldListener(ActionListener listener) {
-		priceField.addActionListener(listener);
+	public void addPriceFieldListener(KeyListener listener) {
+		priceField.addKeyListener(listener);
 	}
 	
 	public void addDeleteProductButtonListener(ActionListener listener) {
