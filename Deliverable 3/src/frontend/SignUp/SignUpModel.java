@@ -2,6 +2,8 @@ package frontend.SignUp;
 
 import java.util.concurrent.CompletableFuture;
 
+import common.VerifyCredentialsResponse;
+
 public class SignUpModel {
     
     /**
@@ -11,15 +13,15 @@ public class SignUpModel {
      * @param password The password associated with the username.
      * @return A CompletableFuture<Boolean> representing the asynchronous registration process.
      */
-    public CompletableFuture<Boolean> register(String username, String password) {
+	public CompletableFuture<VerifyCredentialsResponse> register(String username, String password) {
         return CompletableFuture.supplyAsync(() -> {
             try {
-                // Simulating a delay for registration process
+                // Simulating a delay for connection and verification
                 Thread.sleep(2000);
-                return true; // return true if registration is successful
+                return new VerifyCredentialsResponse(true, VerifyCredentialsResponse.UserType.Customer);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                return false;
+                return new VerifyCredentialsResponse(false, VerifyCredentialsResponse.UserType.None);
             }
         });
     }

@@ -16,7 +16,7 @@ public class SignUpView extends JComponent {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
         signUpButton = new JButton("Sign up");
-        loginButton = new JButton("Login");
+        loginButton = new JButton("Return to login");
 
         JPanel inputPanel = new JPanel(new GridLayout(0, 2, 5, 5)); //0 rows for variable number of components
         inputPanel.add(new JLabel("Username:"));

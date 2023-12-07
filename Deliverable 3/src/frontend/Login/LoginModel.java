@@ -4,6 +4,7 @@
 package frontend.Login;
 
 import java.util.concurrent.CompletableFuture;
+import common.VerifyCredentialsResponse;
 
 public class LoginModel {
 	
@@ -27,27 +28,11 @@ public class LoginModel {
             try {
                 // Simulating a delay for connection and verification
                 Thread.sleep(2000);
-                return new VerifyCredentialsResponse(true, UserType.Customer);
+                return new VerifyCredentialsResponse(true, VerifyCredentialsResponse.UserType.Customer);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                return new VerifyCredentialsResponse(false, UserType.None);
+                return new VerifyCredentialsResponse(false, VerifyCredentialsResponse.UserType.None);
             }
         });
     }
-	
-	public enum UserType {
-		None,
-		Customer,
-		Seller
-	}
-
-	public class VerifyCredentialsResponse {
-		public boolean verified;
-		public UserType userType;
-		
-		public VerifyCredentialsResponse(boolean verified, UserType userType) {
-			this.verified = verified;
-			this.userType = userType;
-		}
-	}
 }

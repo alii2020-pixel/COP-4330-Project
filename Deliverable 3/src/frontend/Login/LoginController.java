@@ -9,6 +9,7 @@ import frontend.LogoutWrapper.*;
 import frontend.MainScreenCustomer.*;
 import frontend.MainScreenSeller.*;
 import frontend.SignUp.*;
+import common.VerifyCredentialsResponse;
 
 public class LoginController {
 	LoginModel model;
@@ -40,7 +41,7 @@ public class LoginController {
 						LogoutWrapperModel lgwModel = new LogoutWrapperModel();
 						LogoutWrapperController lgwController = new LogoutWrapperController(lgwView, lgwModel);
 						
-						if (response.userType == LoginModel.UserType.Customer) {
+						if (response.userType == VerifyCredentialsResponse.UserType.Customer) {
 							// Customer
 							MainScreenCustomerView mscView = new MainScreenCustomerView();
 							MainScreenCustomerModel mscModel = new MainScreenCustomerModel();
