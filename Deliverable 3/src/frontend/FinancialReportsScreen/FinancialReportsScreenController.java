@@ -13,6 +13,10 @@ public class FinancialReportsScreenController {
     public FinancialReportsScreenController( FinancialReportsScreenView view, FinancialReportsScreenModel model) {
         this.model = model;
         this.view = view;
+        
+        view.addBackButtonListener(e -> onBackButtonClick());
+        view.setTotalSalesLabelText(Integer.toString(model.getTotalSales()));
+        view.setTotalProfitLabelText(String.format("$%.2f", model.getTotalProfit()));
     }
 
     private void onBackButtonClick() {
