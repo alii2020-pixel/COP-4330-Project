@@ -1,3 +1,6 @@
+// ProductView.java
+// Ethan Curtis
+
 package frontend.Product;
 
 import javax.swing.*;
@@ -11,7 +14,7 @@ public class ProductView extends JComponent {
 	
     public ProductView() {
     	JPanel allContainer = new JPanel();
-    	allContainer.setLayout(new BoxLayout(allContainer, BoxLayout.X_AXIS));
+    	allContainer.setLayout(new BorderLayout());
     	
     	JPanel buttonPanel = new JPanel();
     	buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -23,6 +26,7 @@ public class ProductView extends JComponent {
     	
     	JPanel labelPanel = new JPanel();
     	labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS));
+    	labelPanel.setPreferredSize(new Dimension(200, 100));
     	
     	titleLabel = new JLabel("Item Title");
     	descriptionLabel = new JLabel("Item Description");
@@ -35,7 +39,7 @@ public class ProductView extends JComponent {
     	labelPanel.add(countLabel);
     	
     	allContainer.add(labelPanel);
-    	allContainer.add(buttonPanel);
+    	allContainer.add(buttonPanel, BorderLayout.EAST);
     	
     	add(allContainer);
     	
