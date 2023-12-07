@@ -1,3 +1,6 @@
+// ProductController.java
+// Ethan Curtis
+
 package frontend.Product;
 
 public class ProductController {

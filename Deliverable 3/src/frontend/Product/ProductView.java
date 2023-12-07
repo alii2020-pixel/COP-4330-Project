@@ -1,3 +1,6 @@
+// ProductView.java
+// Ethan Curtis
+
 package frontend.Product;
 
 import javax.swing.*;

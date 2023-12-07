@@ -1,3 +1,6 @@
+// ProductModel.java
+// Ethan Curtis
+
 package frontend.Product;
 
 import common.Product;
