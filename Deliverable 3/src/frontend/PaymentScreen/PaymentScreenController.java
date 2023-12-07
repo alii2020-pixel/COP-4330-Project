@@ -7,11 +7,15 @@ import javax.swing.JOptionPane;
 public class PaymentScreenController {
     private PaymentScreenView view;
     private PaymentScreenModel model;
+    
     public PaymentScreenController(PaymentScreenView view, PaymentScreenModel model) {
         this.view = view;
         this.model = model;
+        
         // Set up the submit button listener
         view.setSubmitButtonListener(new SubmitButtonListener());
+        
+        view.setTotalCostLabelText(String.format("Total cost: $%.2f", model.getCustomer().getShoppingCart().getCartTotal()));
     }
     private class SubmitButtonListener implements ActionListener {
         @Override
@@ -34,14 +38,6 @@ public class PaymentScreenController {
                 JOptionPane.showMessageDialog(view, "Invalid payment details. Please check and try again.");
             }
         }
-    }
-    public static void main(String[] args) {
-        // Create an instance of the model, view, and controller
-        PaymentScreenModel model = new PaymentScreenModel();
-        PaymentScreenView view = new PaymentScreenView();
-        PaymentScreenController controller = new PaymentScreenController(view, model);
-        // Make the view visible
-        view.setVisible(true);
     }
 }
 

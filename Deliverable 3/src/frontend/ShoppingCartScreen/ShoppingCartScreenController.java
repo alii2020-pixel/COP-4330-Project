@@ -8,6 +8,7 @@ import common.Product;
 import frontend.Product.*;
 import frontend.LogoutWrapper.LogoutWrapperController;
 import frontend.MainScreenCustomer.*;
+import frontend.PaymentScreen.*;
 
 
 public class ShoppingCartScreenController {
@@ -43,6 +44,7 @@ public class ShoppingCartScreenController {
 		view.addProductViews(views);
 		
 		view.addBackButtonListener(e -> onBackButtonClick());
+		view.addCheckoutButtonListener(e -> onCheckoutButtonClick());
 		
 		cartChangedAction = new ActionListener() {
 			@Override
@@ -56,10 +58,19 @@ public class ShoppingCartScreenController {
 	}
 	
 	private void onBackButtonClick() {
+		model.getCustomer().getShoppingCart().removeCartUpdatedListener(cartChangedAction);
+		
 		MainScreenCustomerView view = new MainScreenCustomerView();
 		MainScreenCustomerModel model = new MainScreenCustomerModel(this.model.getCustomer());
 		LogoutWrapperController.Instance.changeMVC(model, view, new MainScreenCustomerController(view, model));
+	}
+	
+	private void onCheckoutButtonClick() {
 		model.getCustomer().getShoppingCart().removeCartUpdatedListener(cartChangedAction);
+		
+		PaymentScreenView view = new PaymentScreenView();
+		PaymentScreenModel model = new PaymentScreenModel(this.model.getCustomer());
+		LogoutWrapperController.Instance.changeMVC(model ,view, new PaymentScreenController(view, model));
 	}
 	
 	private void updatePriceTotalLabelText() {

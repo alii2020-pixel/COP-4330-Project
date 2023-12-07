@@ -1,6 +1,8 @@
 package frontend.PaymentScreen;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,40 +11,54 @@ import javax.swing.JComponent;
 import java.awt.event.ActionListener;
 
 public class PaymentScreenView extends JComponent {
-    private JTextField cardNumberField;
-    private JTextField expiryDateField;
-    private JTextField cvvField;
+    private JTextField cardNumberField, expiryDateField, cvvField;
     private JButton submitButton;
+    private JLabel totalCostLabel;
+    
     public PaymentScreenView() {
-        initUI();
-    }
-    private void initUI() {
-        // Set up UI elements
-        JPanel panel = new JPanel(new FlowLayout());
-        panel.add(new JLabel("Card Number:"));
+    	JPanel allContainer = new JPanel(new GridLayout(2, 1, 10, 10));
+    	
+    	totalCostLabel = new JLabel("Total cost: $0.00");
+    	allContainer.add(totalCostLabel);
+    	
+        JPanel creditCardInfoPanel = new JPanel(new FlowLayout());
+        creditCardInfoPanel.add(new JLabel("Card Number:"));
         cardNumberField = new JTextField(16);
-        panel.add(cardNumberField);
-        panel.add(new JLabel("Expiry Date:"));
+        creditCardInfoPanel.add(cardNumberField);
+        creditCardInfoPanel.add(new JLabel("Expiry Date:"));
         expiryDateField = new JTextField(5);
-        panel.add(expiryDateField);
-        panel.add(new JLabel("CVV:"));
+        creditCardInfoPanel.add(expiryDateField);
+        creditCardInfoPanel.add(new JLabel("CVV:"));
         cvvField = new JTextField(3);
-        panel.add(cvvField);
+        creditCardInfoPanel.add(cvvField);
         submitButton = new JButton("Submit");
-        panel.add(submitButton);
-        // No need to set up the frame as JComponent does not have one
+        creditCardInfoPanel.add(submitButton);
+        
+        allContainer.add(creditCardInfoPanel);
+        
+        add(allContainer);
+        setLayout(new FlowLayout());
+        setVisible(true);
     }
+
     public String getCardNumber() {
         return cardNumberField.getText();
     }
+    
     public String getExpiryDate() {
         return expiryDateField.getText();
     }
+    
     public String getCVV() {
         return cvvField.getText();
     }
+    
     public void setSubmitButtonListener(ActionListener listener) {
         submitButton.addActionListener(listener);
+    }
+    
+    public void setTotalCostLabelText(String text) {
+    	totalCostLabel.setText(text);
     }
 }
 

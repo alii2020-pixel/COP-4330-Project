@@ -66,6 +66,10 @@ public class ShoppingCartScreenView extends JComponent {
     	backButton.addActionListener(listener);
     }
     
+    public void addCheckoutButtonListener(ActionListener listener) {
+    	checkoutButton.addActionListener(listener);
+    }
+    
     public void setPriceTotalLabelText(String text) {
     	priceTotalLabel.setText(text);
     }

@@ -3,10 +3,23 @@ package frontend.PaymentScreen;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
+
+import common.Customer;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class PaymentScreenModel {
+	private Customer customer;
+	
+	public PaymentScreenModel(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
     public boolean verifyPaymentDetails(String cardNumber, String expiryDate, String cvv) {
         // Verify card number (must be 16 digits)
         if (!isValidCardNumber(cardNumber)) {
@@ -23,9 +36,11 @@ public class PaymentScreenModel {
         // Payment details are considered valid
         return true;
     }
+    
     private boolean isValidCardNumber(String cardNumber) {
         return cardNumber != null && cardNumber.matches("\\d{16}");
     }
+    
     private boolean isValidExpiryDate(String expiryDate) {
         if (expiryDate == null || !expiryDate.matches("\\d{2}/\\d{2}")) {
             return false;
@@ -37,9 +52,11 @@ public class PaymentScreenModel {
         YearMonth inputYearMonth = YearMonth.of(year, month);
         return inputYearMonth.isAfter(currentYearMonth) && inputYearMonth.isBefore(currentYearMonth.plusYears(3));
     }
+    
     private boolean isValidCVV(String cvv) {
         return cvv != null && cvv.matches("\\d{3}");
     }
+    
     public boolean processTransaction(String cardNumber) {
         // Check if cardNumber has 16 unique integers
         if (!hasUniqueIntegers(cardNumber)) {
@@ -50,6 +67,7 @@ public class PaymentScreenModel {
         System.out.println("Transaction successful.");
         return true;
     }
+    
     private boolean hasUniqueIntegers(String cardNumber) {
         Set<Character> uniqueDigits = new HashSet<>();
         for (char digit : cardNumber.toCharArray()) {
@@ -59,6 +77,7 @@ public class PaymentScreenModel {
         }
         return true;
     }
+    
     public boolean processTransaction() {
         return false;
     }
