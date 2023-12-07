@@ -1,0 +1,14 @@
+common
+frontend
+frontend.FinancialReportsScreen
+frontend.Login
+frontend.LogoutWrapper
+frontend.MainScreenCustomer
+frontend.MainScreenSeller
+frontend.PaymentScreen
+frontend.Product
+frontend.ProductSeller
+frontend.SellerInventoryScreen
+frontend.ShipmentScreen
+frontend.ShoppingCartScreen
+frontend.SignUp
