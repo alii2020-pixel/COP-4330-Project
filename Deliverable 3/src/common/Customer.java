@@ -4,9 +4,15 @@
 package common;
 
 public class Customer extends User {
-	public Customer(String username) {
-		super(username);
+	public Customer(String username, String password) {
+		super(username, password);
+		
+		cart = new ShoppingCart(); // in reality, would load from server.
 	}
 
-	public ShoppingCart cart;
+	private ShoppingCart cart;
+	
+	public ShoppingCart getShoppingCart() {
+		return cart;
+	}
 }

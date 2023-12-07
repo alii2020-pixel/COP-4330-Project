@@ -1,17 +1,11 @@
 package common;
 
 public class VerifyCredentialsResponse {
-	public enum UserType {
-		None,
-		Customer,
-		Seller
-	}
-	
 	public boolean verified;
-	public UserType userType;
+	public User user;
 	
-	public VerifyCredentialsResponse(boolean verified, UserType userType) {
+	public VerifyCredentialsResponse(boolean verified, User user) {
 		this.verified = verified;
-		this.userType = userType;
+		this.user = user;
 	}
 }

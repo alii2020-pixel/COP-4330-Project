@@ -9,7 +9,7 @@ import frontend.LogoutWrapper.*;
 import frontend.MainScreenCustomer.*;
 import frontend.MainScreenSeller.*;
 import frontend.SignUp.*;
-import common.VerifyCredentialsResponse;
+import common.*;
 
 public class LoginController {
 	LoginModel model;
@@ -25,7 +25,9 @@ public class LoginController {
 	
 	private void onLoginButtonClick() {
 		view.showBuffering();
-		model.verifyCredentials(view.getUsername(), view.getPassword())
+		User user = new Customer(view.getUsername(), view.getPassword());
+		
+		model.verifyCredentials(user)
 			.whenComplete((response, throwable) -> {
 				SwingUtilities.invokeLater(() -> {
 					if (response.verified) {
@@ -41,17 +43,21 @@ public class LoginController {
 						LogoutWrapperModel lgwModel = new LogoutWrapperModel();
 						LogoutWrapperController lgwController = new LogoutWrapperController(lgwView, lgwModel);
 						
-						if (response.userType == VerifyCredentialsResponse.UserType.Customer) {
+						if (response.user.getClass() == Customer.class) {
 							// Customer
+							Customer customer = new Customer(view.getUsername(), view.getPassword());
+							
 							MainScreenCustomerView mscView = new MainScreenCustomerView();
-							MainScreenCustomerModel mscModel = new MainScreenCustomerModel();
+							MainScreenCustomerModel mscModel = new MainScreenCustomerModel(customer);
 							MainScreenCustomerController mscController = new MainScreenCustomerController(mscView, mscModel);
 							
 							lgwController.changeMVC(mscModel, mscView, mscController);
 						} else {
 							// Seller
+							Seller seller = new Seller(view.getUsername(), view.getPassword());
+							
 							MainScreenSellerView mssView = new MainScreenSellerView();
-							MainScreenSellerModel mssModel = new MainScreenSellerModel();
+							MainScreenSellerModel mssModel = new MainScreenSellerModel(seller);
 							MainScreenSellerController mssController = new MainScreenSellerController(mssView, mssModel);
 							
 							lgwController.changeMVC(mssView, mssView, mssController);

@@ -7,7 +7,7 @@ import frontend.Login.*;
 import frontend.LogoutWrapper.*;
 import frontend.MainScreenCustomer.*;
 import frontend.MainScreenSeller.*;
-import common.VerifyCredentialsResponse;
+import common.*;
 
 public class SignUpController {
     SignUpModel model;
@@ -24,7 +24,11 @@ public class SignUpController {
 
     private void onSignUpButtonClick() {
         view.showBuffering();
-        model.register(view.getUsername(), view.getPassword(), view.getUserType())
+        User user = view.getUserType().equals("Customer") ? 
+        		new Customer(view.getUsername(), view.getPassword()) : 
+        		new Seller(view.getUsername(), view.getPassword());
+        
+        model.register(user)
             .whenComplete((response, throwable) -> {
                 SwingUtilities.invokeLater(() -> {
                     if (response.verified) {
@@ -40,17 +44,17 @@ public class SignUpController {
 						LogoutWrapperModel lgwModel = new LogoutWrapperModel();
 						LogoutWrapperController lgwController = new LogoutWrapperController(lgwView, lgwModel);
 						
-						if (response.userType == VerifyCredentialsResponse.UserType.Customer) {
+						if (response.user.getClass() == Customer.class) {
 							// Customer
 							MainScreenCustomerView mscView = new MainScreenCustomerView();
-							MainScreenCustomerModel mscModel = new MainScreenCustomerModel();
+							MainScreenCustomerModel mscModel = new MainScreenCustomerModel((Customer) user);
 							MainScreenCustomerController mscController = new MainScreenCustomerController(mscView, mscModel);
 							
 							lgwController.changeMVC(mscModel, mscView, mscController);
 						} else {
 							// Seller
 							MainScreenSellerView mssView = new MainScreenSellerView();
-							MainScreenSellerModel mssModel = new MainScreenSellerModel();
+							MainScreenSellerModel mssModel = new MainScreenSellerModel((Seller) user);
 							MainScreenSellerController mssController = new MainScreenSellerController(mssView, mssModel);
 							
 							lgwController.changeMVC(mssView, mssView, mssController);

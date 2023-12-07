@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import common.VerifyCredentialsResponse.UserType;
-
 public class SignUpView extends JComponent {
     private JTextField usernameField;
     private JPasswordField passwordField;
@@ -131,8 +129,8 @@ public class SignUpView extends JComponent {
         return new String(passwordField.getPassword());
     }
     
-    public UserType getUserType() {
-    	return (userTypeButton.getText().equals("Customer")) ? UserType.Customer : UserType.Seller;
+    public String getUserType() {
+    	return userTypeButton.getText();
     }
 
     /**

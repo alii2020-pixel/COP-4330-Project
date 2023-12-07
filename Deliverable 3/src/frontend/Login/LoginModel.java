@@ -4,7 +4,8 @@
 package frontend.Login;
 
 import java.util.concurrent.CompletableFuture;
-import common.VerifyCredentialsResponse;
+
+import common.*;
 
 public class LoginModel {
 	
@@ -23,15 +24,15 @@ public class LoginModel {
 	 *           implementation to connect to a server and verify the provided username and password.
 	 *           The completion of the CompletableFuture indicates the result of the verification process.
 	 */
-	public CompletableFuture<VerifyCredentialsResponse> verifyCredentials(String username, String password) {
+	public CompletableFuture<VerifyCredentialsResponse> verifyCredentials(User user) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 // Simulating a delay for connection and verification
                 Thread.sleep(2000);
-                return new VerifyCredentialsResponse(true, VerifyCredentialsResponse.UserType.Customer);
+                return new VerifyCredentialsResponse(true, user);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                return new VerifyCredentialsResponse(false, VerifyCredentialsResponse.UserType.None);
+                return new VerifyCredentialsResponse(false, user);
             }
         });
     }

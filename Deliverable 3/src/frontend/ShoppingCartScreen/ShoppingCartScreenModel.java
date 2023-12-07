@@ -6,13 +6,13 @@ package frontend.ShoppingCartScreen;
 import common.*;
 
 public class ShoppingCartScreenModel {
-	ShoppingCart shoppingCart;
+	Customer customer;
 	
-	public ShoppingCartScreenModel(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public ShoppingCartScreenModel(Customer customer) {
+		this.customer = customer;
 	}
 	
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+	public Customer getCustomer() {
+		return customer;
 	}
 }

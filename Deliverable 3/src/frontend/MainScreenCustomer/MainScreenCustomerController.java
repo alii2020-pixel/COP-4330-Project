@@ -30,7 +30,7 @@ public class MainScreenCustomerController {
 			pView.setDescriptionLabelText(product.getDescription());
 			pView.setPriceLabelText(String.format("$%.2f", product.getPrice()));
 			
-			ProductModel pModel = new ProductModel(product, model.getShoppingCart());
+			ProductModel pModel = new ProductModel(product, model.getCustomer().getShoppingCart());
 			
 			pView.setCountLabelText(Integer.toString(pModel.getCount()) + " item(s) in cart.");
 			
@@ -47,7 +47,7 @@ public class MainScreenCustomerController {
 		// navigate to shopping cart page
 		
 		ShoppingCartScreenView view = new ShoppingCartScreenView();
-		ShoppingCartScreenModel model = new ShoppingCartScreenModel(this.model.getShoppingCart());
+		ShoppingCartScreenModel model = new ShoppingCartScreenModel(this.model.getCustomer());
 		LogoutWrapperController.Instance.changeMVC(model, view, new ShoppingCartScreenController(view, model));
 	}
 }

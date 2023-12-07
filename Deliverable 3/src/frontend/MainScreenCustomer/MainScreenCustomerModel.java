@@ -7,18 +7,14 @@ import java.util.*;
 import common.*;
 
 public class MainScreenCustomerModel {
-	ShoppingCart shoppingCart;
+	private Customer customer;
 	
-	public MainScreenCustomerModel() {
-		shoppingCart = new ShoppingCart(); // TODO: SWITCH TO LOADING FROM SERVER?
+	public MainScreenCustomerModel(Customer customer) {
+		this.customer = customer;
 	}
 	
-	public MainScreenCustomerModel(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
-	
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+	public Customer getCustomer() {
+		return customer;
 	}
 	
 	public List<Product> getProducts() {

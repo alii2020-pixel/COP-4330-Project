@@ -1,3 +1,5 @@
+// MainScreenSellerView.java
+// Brandon Christian, Ethan Curtis
 
 package frontend.MainScreenSeller;
 
@@ -8,29 +10,16 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 
 
 public class MainScreenSellerView extends JComponent {
-    
-    private SellerInventoryScreenView sellerInventoryScreenView;
-    
-    private FinancialReportsScreenView financialReportsScreenView;
-    
+	private JButton sellerInventoryButton, financialReportsButton;
+	
     public MainScreenSellerView() {
-       
-        // Instantiate Seller Inventory Screen View
-        sellerInventoryScreenView = new SellerInventoryScreenView();
-       
-        // Instantiate Financial Reports Screen View
-        financialReportsScreenView = new FinancialReportsScreenView();
-       
         // Create UI components
-        JButton sellerInventoryButton = new JButton("Open Seller Inventory");
-        JButton financialReportsButton = new JButton("Open Financial Reports");
-       
-        // Add action listeners to the buttons
-        sellerInventoryButton.addActionListener(e -> showSellerInventoryScreen());
-        financialReportsButton.addActionListener(e -> showFinancialReportsScreen());
+        sellerInventoryButton = new JButton("Open Seller Inventory");
+        financialReportsButton = new JButton("Open Financial Reports");
        
         // Create a panel to hold the buttons
         JPanel buttonPanel = new JPanel();
@@ -46,12 +35,12 @@ public class MainScreenSellerView extends JComponent {
         // Set component properties
         setPreferredSize(getPreferredSize());
     }
-    private void showSellerInventoryScreen() {
-        // Implement logic to show Seller Inventory Screen
-        sellerInventoryScreenView.setVisible(true);
+    
+    public void addSellerInventoryButtonListener(ActionListener listener) {
+    	sellerInventoryButton.addActionListener(listener);
     }
-    private void showFinancialReportsScreen() {
-        // Implement logic to show Financial Reports Screen
-        financialReportsScreenView.setVisible(true);
+    
+    public void addFinancialReportsButtonListener(ActionListener listener) {
+    	financialReportsButton.addActionListener(listener);
     }
 }

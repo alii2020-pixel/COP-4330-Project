@@ -24,7 +24,7 @@ public class ShoppingCartScreenController {
 		List<ProductView> views = new LinkedList<ProductView>();
 		pControllers = new LinkedList<ProductController>();
 		
-		for (Product product : model.getShoppingCart().getProducts()) {
+		for (Product product : model.getCustomer().getShoppingCart().getProducts()) {
 			ProductView pView = new ProductView();
 			views.add(pView);
 			
@@ -32,7 +32,7 @@ public class ShoppingCartScreenController {
 			pView.setDescriptionLabelText(product.getDescription());
 			pView.setPriceLabelText(String.format("$%.2f", product.getPrice()));
 			
-			ProductModel pModel = new ProductModel(product, model.getShoppingCart());
+			ProductModel pModel = new ProductModel(product, model.getCustomer().getShoppingCart());
 			
 			pView.setCountLabelText(Integer.toString(pModel.getCount()) + " item(s) in cart.");
 			
@@ -50,19 +50,19 @@ public class ShoppingCartScreenController {
 				updatePriceTotalLabelText();
 			}
 		};
-		model.getShoppingCart().addCartUpdatedListener(cartChangedAction);
+		model.getCustomer().getShoppingCart().addCartUpdatedListener(cartChangedAction);
 		
 		updatePriceTotalLabelText();
 	}
 	
 	private void onBackButtonClick() {
 		MainScreenCustomerView view = new MainScreenCustomerView();
-		MainScreenCustomerModel model = new MainScreenCustomerModel(this.model.getShoppingCart());
+		MainScreenCustomerModel model = new MainScreenCustomerModel(this.model.getCustomer());
 		LogoutWrapperController.Instance.changeMVC(model, view, new MainScreenCustomerController(view, model));
-		model.getShoppingCart().removeCartUpdatedListener(cartChangedAction);
+		model.getCustomer().getShoppingCart().removeCartUpdatedListener(cartChangedAction);
 	}
 	
 	private void updatePriceTotalLabelText() {
-		view.setPriceTotalLabelText(String.format("Total: $%.2f", model.getShoppingCart().getCartTotal()));
+		view.setPriceTotalLabelText(String.format("Total: $%.2f", model.getCustomer().getShoppingCart().getCartTotal()));
 	}
 }
