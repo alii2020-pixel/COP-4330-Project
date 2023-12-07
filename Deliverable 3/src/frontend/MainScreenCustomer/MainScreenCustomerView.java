@@ -23,7 +23,7 @@ public class MainScreenCustomerView extends JComponent {
     	
     	allContainer.add(shoppingCartButton, BorderLayout.NORTH);
     	allContainer.add(productContainer);
-    	
+
     	add(allContainer);
     	
     	setLayout(new FlowLayout());
