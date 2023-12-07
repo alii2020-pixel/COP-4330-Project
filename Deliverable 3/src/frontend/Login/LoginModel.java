@@ -10,19 +10,11 @@ import common.*;
 public class LoginModel {
 	
 	/**
-	 * Verifies the provided username and password by initiating a connection to the server asynchronously.
+	 * Verifies the provided user's credentials asynchronously.
 	 *
-	 * @param username The username to be verified.
-	 * @param password The password (as a char array) associated with the username.
-	 * @return A CompletableFuture<Boolean> representing the asynchronous verification process.
-	 *         The CompletableFuture completes with a boolean value:
-	 *         - True if the credentials are verified successfully.
-	 *         - False if the verification fails or encounters an error.
-	 *         Use CompletableFuture's methods for handling completion, exceptions, or combining further operations.
-	 *
-	 * @implNote This method simulates a connection and verification process. Replace the logic with the actual
-	 *           implementation to connect to a server and verify the provided username and password.
-	 *           The completion of the CompletableFuture indicates the result of the verification process.
+	 * @param user The User object containing username and password to be registered.
+	 * @return A CompletableFuture<VerifyCredentialsResponse> representing the asynchronous registration process.
+	 *         The CompletableFuture will complete with a VerifyCredentialsResponse indicating success or failure.
 	 */
 	public CompletableFuture<VerifyCredentialsResponse> verifyCredentials(User user) {
         return CompletableFuture.supplyAsync(() -> {

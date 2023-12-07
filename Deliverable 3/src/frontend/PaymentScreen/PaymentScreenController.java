@@ -9,10 +9,19 @@ import javax.swing.JOptionPane;
 import frontend.LogoutWrapper.LogoutWrapperController;
 import frontend.ShipmentScreen.*;
 
+/**
+ * Controls the payment screen functionality, managing interactions between the view and model.
+ */
 public class PaymentScreenController {
     private PaymentScreenView view;
     private PaymentScreenModel model;
     
+    /**
+     * Constructs a PaymentScreenController with the associated view and model.
+     *
+     * @param view  The view component for the payment screen.
+     * @param model The model containing data and functionality for payment processing.
+     */
     public PaymentScreenController(PaymentScreenView view, PaymentScreenModel model) {
         this.view = view;
         this.model = model;
@@ -23,6 +32,10 @@ public class PaymentScreenController {
         view.setTotalCostLabelText(String.format("Total cost: $%.2f", model.getCustomer().getShoppingCart().getCartTotal()));
     }
     
+    /**
+     * ActionListener implementation for the submit button on the payment screen.
+     * Handles payment verification and transaction processing.
+     */
     private class SubmitButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -50,6 +63,9 @@ public class PaymentScreenController {
         }
     }
     
+    /**
+     * Switches the view to the shipment screen after successful payment processing.
+     */
     private void switchToShipmentScreen() {
     	ShipmentScreenView view = new ShipmentScreenView();
     	ShipmentScreenModel model = new ShipmentScreenModel(this.model.getCustomer());

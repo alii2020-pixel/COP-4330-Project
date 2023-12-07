@@ -11,10 +11,19 @@ import frontend.MainScreenSeller.*;
 import frontend.SignUp.*;
 import common.*;
 
+/**
+ * Controls the login functionality, handling interactions between the LoginView and LoginModel.
+ */
 public class LoginController {
 	LoginModel model;
 	LoginView view;
 	
+	/**
+     * Constructs a LoginController with the associated LoginModel and LoginView.
+     *
+     * @param model The model containing login-related functionality and data.
+     * @param view  The view responsible for displaying the login interface.
+     */
 	public LoginController(LoginModel model, LoginView view) {
 		this.model = model;
 		this.view = view;
@@ -23,6 +32,10 @@ public class LoginController {
 		view.addSignUpButtonListener(e -> onSignUpButtonClick());
 	}
 	
+	/**
+     * Handles the action when the login button is clicked.
+     * Performs login verification, switches views based on user type, and handles the login process.
+     */
 	private void onLoginButtonClick() {
 		view.showBuffering();
 		User user = new Customer(view.getUsername(), view.getPassword());
@@ -77,6 +90,10 @@ public class LoginController {
 			});
 	}
 	
+	/**
+     * Handles the action when the sign-up button is clicked.
+     * Navigates to the sign-up view for user registration.
+     */
 	private void onSignUpButtonClick() {
 		// navigate to SignUpView
 		SignUpView signUpView = new SignUpView();

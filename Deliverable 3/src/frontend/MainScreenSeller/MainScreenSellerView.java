@@ -7,10 +7,15 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
-
+/**
+ * Represents the view component for the main screen of a seller.
+ */
 public class MainScreenSellerView extends JComponent {
 	private JButton sellerInventoryButton, financialReportsButton;
 	
+	/**
+     * Constructs the MainScreenSellerView with buttons for seller inventory and financial reports.
+     */
     public MainScreenSellerView() {
         // Create UI components
         sellerInventoryButton = new JButton("Open Seller Inventory");
@@ -31,10 +36,20 @@ public class MainScreenSellerView extends JComponent {
         setPreferredSize(getPreferredSize());
     }
     
+    /**
+     * Adds an ActionListener to the seller inventory button.
+     *
+     * @param listener The ActionListener to be added to the seller inventory button.
+     */
     public void addSellerInventoryButtonListener(ActionListener listener) {
     	sellerInventoryButton.addActionListener(listener);
     }
     
+    /**
+     * Adds an ActionListener to the financial reports button.
+     *
+     * @param listener The ActionListener to be added to the financial reports button.
+     */
     public void addFinancialReportsButtonListener(ActionListener listener) {
     	financialReportsButton.addActionListener(listener);
     }

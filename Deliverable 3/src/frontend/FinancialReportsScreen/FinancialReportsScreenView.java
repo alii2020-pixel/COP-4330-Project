@@ -10,10 +10,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/**
+ * Represents the view component for displaying financial reports.
+ */
 public class FinancialReportsScreenView extends JComponent {
 	private JButton backButton;
 	private JLabel totalSalesLabel, totalProfitLabel;
 	
+	/**
+     * Constructs the FinancialReportsScreenView.
+     * Initializes and arranges the graphical components to display financial reports.
+     */
 	public FinancialReportsScreenView() {
 		JPanel allContainer = new JPanel();
 		allContainer.setLayout(new BorderLayout());
@@ -37,16 +44,31 @@ public class FinancialReportsScreenView extends JComponent {
     	setVisible(true);
 	}
 	
-	public void addBackButtonListener(ActionListener listener) {
-		backButton.addActionListener(listener);
-	}
-	
-	public void setTotalSalesLabelText(String text) {
-		totalSalesLabel.setText(text);
-	}
-	
-	public void setTotalProfitLabelText(String text) {
-		totalProfitLabel.setText(text);
-	}
+	/**
+     * Adds an ActionListener to the back button.
+     *
+     * @param listener The ActionListener to be added to the back button.
+     */
+    public void addBackButtonListener(ActionListener listener) {
+        backButton.addActionListener(listener);
+    }
+
+    /**
+     * Sets the text for the total sales label.
+     *
+     * @param text The text to be set for the total sales label.
+     */
+    public void setTotalSalesLabelText(String text) {
+        totalSalesLabel.setText(text);
+    }
+
+    /**
+     * Sets the text for the total profit label.
+     *
+     * @param text The text to be set for the total profit label.
+     */
+    public void setTotalProfitLabelText(String text) {
+        totalProfitLabel.setText(text);
+    }
 	
 }

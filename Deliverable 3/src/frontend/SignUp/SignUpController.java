@@ -1,3 +1,6 @@
+// SignUpController.java
+// Ethan Curtis
+
 package frontend.SignUp;
 
 import javax.swing.SwingUtilities;
@@ -9,10 +12,21 @@ import frontend.MainScreenCustomer.*;
 import frontend.MainScreenSeller.*;
 import common.*;
 
+/**
+ * Controller responsible for handling the sign-up process, creating user accounts,
+ * and managing the view interactions for signing up.
+ */
 public class SignUpController {
     SignUpModel model;
     SignUpView view;
 
+    /**
+     * Constructs a SignUpController with the associated SignUpModel and SignUpView.
+     * Registers listeners for sign-up and login actions in the provided view.
+     *
+     * @param model The SignUpModel associated with this controller.
+     * @param view  The SignUpView associated with this controller.
+     */
     public SignUpController(SignUpModel model, SignUpView view) {
         this.model = model;
         this.view = view;
@@ -22,6 +36,11 @@ public class SignUpController {
         view.addLoginButtonListener(e -> onLoginButtonClick());
     }
 
+    /**
+     * Action to be performed when the sign-up button is clicked.
+     * Initiates the sign-up process, creating a user account based on the provided information.
+     * Completes the sign-up action asynchronously and switches to the appropriate main screen upon success.
+     */
     private void onSignUpButtonClick() {
         view.showBuffering();
         User user = view.getUserType().equals("Customer") ? 
@@ -79,6 +98,10 @@ public class SignUpController {
             });
     }
     
+    /**
+     * Action to be performed when the login button is clicked.
+     * Navigates the user to the login view to sign in after attempting to sign up.
+     */
     private void onLoginButtonClick() {
     	// navigate to Login
     	LoginView loginView = new LoginView();

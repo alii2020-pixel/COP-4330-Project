@@ -8,10 +8,20 @@ import java.awt.event.KeyListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Controls the interaction between the ProductSellerView and ProductSellerModel.
+ * Handles user input from the view and updates the model accordingly.
+ */
 public class ProductSellerController {
 	private ProductSellerView view;
 	private ProductSellerModel model;
 	
+	/**
+     * Constructs a ProductSellerController object.
+     *
+     * @param view  The ProductSellerView associated with this controller.
+     * @param model The ProductSellerModel associated with this controller.
+     */
 	public ProductSellerController(ProductSellerView view, ProductSellerModel model) {
 		this.view = view;
 		this.model = model;
@@ -48,19 +58,34 @@ public class ProductSellerController {
 		});
 	}
 	
+	/**
+     * Updates the product name in the model when the title field is edited.
+     */
 	private void onTitleFieldEdit() {
 		model.getProduct().setName(view.getTitleFieldText());
 	}
 	
+	/**
+     * Updates the product description in the model when the description field is edited.
+     */
 	private void onDescriptionFieldEdit() {
 		model.getProduct().setDescription(view.getDescriptionFieldText());
 	}
 	
+	/**
+     * Updates the product price in the model when the price field is edited.
+     */
 	private void onPriceFieldEdit() {
 		double price = extractFloatingNumber(view.getPriceFieldText());
 		model.getProduct().setPrice(price);
 	}
 	
+	/**
+     * Extracts a floating-point number from the given input string.
+     *
+     * @param input The input string from which the number is extracted.
+     * @return The extracted floating-point number.
+     */
 	private double extractFloatingNumber(String input) {
         // Regular expression to match a floating-point number pattern
         Pattern pattern = Pattern.compile("^\\d*\\.\\d+|\\d+\\.\\d*$");

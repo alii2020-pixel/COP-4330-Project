@@ -12,12 +12,22 @@ import frontend.ProductSeller.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Controls interactions between the SellerInventoryScreenView and SellerInventoryScreenModel.
+ * Manages the behavior and actions related to the seller's inventory screen.
+ */
 public class SellerInventoryScreenController {
     private SellerInventoryScreenModel model;
     private SellerInventoryScreenView view;
-    
     private List<ProductSellerController> pControllers;
     
+    /**
+     * Constructs a SellerInventoryScreenController object.
+     * Initializes the controller with the associated view and model.
+     *
+     * @param view  The SellerInventoryScreenView to be controlled.
+     * @param model The SellerInventoryScreenModel to be managed.
+     */
     public SellerInventoryScreenController(SellerInventoryScreenView view, SellerInventoryScreenModel model) {
         this.model = model;
         this.view = view;
@@ -30,6 +40,10 @@ public class SellerInventoryScreenController {
         updateProductViews();
     }
     
+    /**
+     * Handles the action when the back button is clicked.
+     * Navigates back to the MainScreenSeller view and model.
+     */
     private void onBackButtonClick() {
     	// back to MainScreenSeller
     	
@@ -38,6 +52,10 @@ public class SellerInventoryScreenController {
     	LogoutWrapperController.Instance.changeMVC(model, view, new MainScreenSellerController(view, model));
     }
     
+    /**
+     * Handles the action when the add product button is clicked.
+     * Creates a new product and adds it to the seller's inventory.
+     */
     private void onAddProductButtonClick() {
     	Product product = new Product();
     	
@@ -46,6 +64,10 @@ public class SellerInventoryScreenController {
     	updateProductViews();
     }
     
+    /**
+     * Updates the product views in the SellerInventoryScreenView based on the SellerInventoryScreenModel.
+     * Refreshes the displayed list of products in the seller's inventory.
+     */
     private void updateProductViews() {
     	view.removeAllProductViews();
     	

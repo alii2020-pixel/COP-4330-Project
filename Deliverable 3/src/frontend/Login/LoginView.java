@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * Represents the view for the login functionality.
+ */
 public class LoginView extends JComponent {
 	private JTextField usernameField;
 	private JPasswordField passwordField;
@@ -19,6 +22,9 @@ public class LoginView extends JComponent {
 	// for login failure window
 	private JFrame failureFrame;
 	
+	/**
+     * Constructs the LoginView with graphical components for the login interface.
+     */
 	public LoginView() {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
@@ -51,11 +57,11 @@ public class LoginView extends JComponent {
 	}
 	
 	/**
-	 * Displays a login failure window when a user fails to log in.
-	 * This creates a new window that the user will close once they read it.
-	 * 
-	 * @param failureMessage Message to show on the frame.
-	 */
+     * Displays a login failure window when a user fails to log in.
+     * Creates a new window that the user will close once they read it.
+     *
+     * @param failureMessage Message to display on the failure frame.
+     */
 	public void displayLoginFailure(String failureMessage) {
 	    if (failureFrame != null) {
 	        failureFrame.dispose();
@@ -83,7 +89,6 @@ public class LoginView extends JComponent {
 
 	/**
 	 * Shows a symbol to let user know the system is buffering.
-	 * TODO: IMPLEMENT
 	 */
 	public void showBuffering() {
 		//throw new UnsupportedOperationException();
@@ -105,7 +110,6 @@ public class LoginView extends JComponent {
 	
 	/**
 	 * Hides the buffering symbol.
-	 * TODO: IMPLEMENT
 	 */
 	public void hideBuffering() {
 		this.remove(progressBar);
@@ -115,33 +119,37 @@ public class LoginView extends JComponent {
 	}
 	
 	/**
-	 * Returns the entered username.
-	 * @return The username in the username field.
-	 */
+     * Retrieves the entered username from the username field.
+     *
+     * @return The entered username.
+     */
 	public String getUsername() {
 		return usernameField.getText();
 	}
 	
 	/**
-	 * Returns the entered password.
-	 * @return The password in the password field.
-	 */
+     * Retrieves the entered password from the password field.
+     *
+     * @return The entered password.
+     */
 	public String getPassword() {
 		return new String(passwordField.getPassword());
 	}
 	
 	/**
-	 * Adds an ActionListener to the login button.
-	 * @param listener Listener to add to the sign up button.
-	 */
+     * Adds an ActionListener to the login button.
+     *
+     * @param listener Listener to add to the login button.
+     */
 	public void addLoginButtonListener(ActionListener listener) {
 		loginButton.addActionListener(listener);
 	}
 	
 	/**
-	 * Adds an ActionListener to the sign up button.
-	 * @param listener Listener to add to the sign up button.
-	 */
+     * Adds an ActionListener to the sign-up button.
+     *
+     * @param listener Listener to add to the sign-up button.
+     */
 	public void addSignUpButtonListener(ActionListener listener) {
 		signUpButton.addActionListener(listener);
 	}

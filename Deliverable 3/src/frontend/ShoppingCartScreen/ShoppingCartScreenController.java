@@ -1,3 +1,6 @@
+// ShoppingCartScreenController.java
+// Ethan Curtis
+
 package frontend.ShoppingCartScreen;
 
 import java.awt.event.ActionEvent;
@@ -10,14 +13,23 @@ import frontend.LogoutWrapper.LogoutWrapperController;
 import frontend.MainScreenCustomer.*;
 import frontend.PaymentScreen.*;
 
-
+/**
+ * Controls the interactions between the ShoppingCartScreenView and ShoppingCartScreenModel.
+ * Manages the display of products in the shopping cart, handles cart changes, and navigation options.
+ */
 public class ShoppingCartScreenController {
 	private ShoppingCartScreenView view;
 	private ShoppingCartScreenModel model;
-	
 	private List<ProductController> pControllers;
 	private ActionListener cartChangedAction;
 	
+	/**
+     * Constructs a ShoppingCartScreenController.
+     * Initializes the view, model, and sets up listeners for cart updates and navigation buttons.
+     *
+     * @param view  The view representing the shopping cart screen.
+     * @param model The model containing shopping cart information.
+     */
 	public ShoppingCartScreenController(ShoppingCartScreenView view, ShoppingCartScreenModel model) {
 		this.view = view;
 		this.model = model;
@@ -57,6 +69,10 @@ public class ShoppingCartScreenController {
 		updatePriceTotalLabelText();
 	}
 	
+	/**
+     * Handles the action when the back button is clicked.
+     * Removes the cart update listener and navigates back to the main customer screen.
+     */
 	private void onBackButtonClick() {
 		model.getCustomer().getShoppingCart().removeCartUpdatedListener(cartChangedAction);
 		
@@ -65,6 +81,10 @@ public class ShoppingCartScreenController {
 		LogoutWrapperController.Instance.changeMVC(model, view, new MainScreenCustomerController(view, model));
 	}
 	
+	/**
+     * Handles the action when the checkout button is clicked.
+     * Removes the cart update listener and navigates to the payment screen.
+     */
 	private void onCheckoutButtonClick() {
 		model.getCustomer().getShoppingCart().removeCartUpdatedListener(cartChangedAction);
 		
@@ -73,6 +93,10 @@ public class ShoppingCartScreenController {
 		LogoutWrapperController.Instance.changeMVC(model ,view, new PaymentScreenController(view, model));
 	}
 	
+	/**
+     * Updates the total price label text on the shopping cart screen.
+     * Displays the current total price of items in the cart.
+     */
 	private void updatePriceTotalLabelText() {
 		view.setPriceTotalLabelText(String.format("Total: $%.2f", model.getCustomer().getShoppingCart().getCartTotal()));
 	}

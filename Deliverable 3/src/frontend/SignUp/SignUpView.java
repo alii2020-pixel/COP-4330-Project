@@ -17,6 +17,10 @@ public class SignUpView extends JComponent {
     private JFrame failureFrame;
     private JToggleButton userTypeButton;
 
+    /**
+     * Constructs the SignUpView UI, consisting of input fields, buttons, and panels
+     * to facilitate user registration.
+     */
     public SignUpView() {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
@@ -63,12 +67,10 @@ public class SignUpView extends JComponent {
     }
 
     /**
-	 * Displays a sign up failure window when a user fails to sign up.
-	 * This creates a new window that the user will close once they read it.
-	 * 
-	 * @param failureMessage Message to show on the frame.
-	 */
-
+     * Displays a window when the sign-up process fails, showing an error message.
+     *
+     * @param failureMessage The message to display on the failure frame.
+     */
     public void displaySignUpFailure(String failureMessage) {
         if (failureFrame != null) {
             failureFrame.dispose();
@@ -95,9 +97,8 @@ public class SignUpView extends JComponent {
     }
 
     /**
-     * Displays a symbol to show the user that the program is buffering
+     * Displays a buffering symbol to indicate that the sign-up process is ongoing.
      */
-    
     public void showBuffering() {
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
@@ -114,6 +115,9 @@ public class SignUpView extends JComponent {
         this.setVisible(true);
     }
 
+    /**
+     * Hides the buffering symbol when the sign-up process is complete.
+     */
     public void hideBuffering() {
         this.remove(progressBar);
         this.setVisible(true);
@@ -121,30 +125,46 @@ public class SignUpView extends JComponent {
         this.repaint();
     }
 
+    /**
+     * Retrieves the username entered in the username field.
+     *
+     * @return The username entered in the text field.
+     */
     public String getUsername() {
         return usernameField.getText();
     }
 
+    /**
+     * Retrieves the password entered in the password field.
+     *
+     * @return The password entered in the password field.
+     */
     public String getPassword() {
         return new String(passwordField.getPassword());
     }
     
+    /**
+     * Retrieves the type of user selected (Customer or Seller) from the toggle button.
+     *
+     * @return The type of user selected.
+     */
     public String getUserType() {
     	return userTypeButton.getText();
     }
 
     /**
-	 * Adds an ActionListener to the login button.
-	 * @param listener Listener to add to the sign up button.
-	 */
+     * Adds an ActionListener to the login button.
+     *
+     * @param listener The ActionListener to add to the login button.
+     */
 	public void addLoginButtonListener(ActionListener listener) {
 		loginButton.addActionListener(listener);
 	}
     
-	
 	/**
-	 * Adds an ActionListener to the sign up button.
-	 * @param listener Listener to add to the sign up button.
+	 * Adds an ActionListener to the sign-up button.
+	 *
+	 * @param listener The ActionListener to add to the sign-up button.
 	 */
     public void addSignUpButtonListener(ActionListener listener) {
         signUpButton.addActionListener(listener);

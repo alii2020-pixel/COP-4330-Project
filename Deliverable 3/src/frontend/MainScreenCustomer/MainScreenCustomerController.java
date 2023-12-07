@@ -9,12 +9,20 @@ import frontend.LogoutWrapper.LogoutWrapperController;
 import frontend.ShoppingCartScreen.*;
 import frontend.Product.*;
 
+/**
+ * Controls the functionality of the main screen for customers, handling interactions between the view and model.
+ */
 public class MainScreenCustomerController {
 	private MainScreenCustomerView view;
 	private MainScreenCustomerModel model;
-	
 	private List<ProductController> pControllers;
 	
+	/**
+     * Constructs a MainScreenCustomerController with the associated MainScreenCustomerView and MainScreenCustomerModel.
+     *
+     * @param view  The view component for the main screen of customers.
+     * @param model The model containing data and functionality for the main screen of customers.
+     */
 	public MainScreenCustomerController(MainScreenCustomerView view, MainScreenCustomerModel model) {
 		this.view = view;
 		this.model = model;
@@ -43,6 +51,10 @@ public class MainScreenCustomerController {
 		view.addShoppingCartButtonListener(e -> onShoppingCartButtonClick());
 	}
 	
+	/**
+     * Handles the action when the shopping cart button is clicked.
+     * Navigates to the shopping cart page.
+     */
 	private void onShoppingCartButtonClick() {
 		// navigate to shopping cart page
 		

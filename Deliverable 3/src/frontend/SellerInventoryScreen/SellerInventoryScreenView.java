@@ -9,10 +9,18 @@ import javax.swing.*;
 import java.util.List;
 import frontend.ProductSeller.*;
 
+/**
+ * Represents the view for the seller's inventory screen.
+ * Manages the graphical representation of the seller's inventory, including products and related actions.
+ */
 public class SellerInventoryScreenView extends JComponent {
 	private JButton backButton, addProductButton;
 	private JPanel productContainer;
 	
+	/**
+     * Constructs a SellerInventoryScreenView object.
+     * Initializes UI components for displaying the seller's inventory and related buttons.
+     */
 	public SellerInventoryScreenView() {
 		JPanel allContainer = new JPanel();
     	allContainer.setLayout(new BorderLayout());
@@ -42,18 +50,36 @@ public class SellerInventoryScreenView extends JComponent {
     	setVisible(true);
 	}
 	
+	/**
+     * Adds an ActionListener to the back button.
+     *
+     * @param listener The ActionListener to add to the back button.
+     */
 	public void addBackButtonListener(ActionListener listener) {
 		backButton.addActionListener(listener);
 	}
 	
+	/**
+     * Adds an ActionListener to the add product button.
+     *
+     * @param listener The ActionListener to add to the add product button.
+     */
 	public void addAddProductButtonListener(ActionListener listener) {
 		addProductButton.addActionListener(listener);
 	}
 	
+	/**
+     * Removes all product views from the product container.
+     */
 	public void removeAllProductViews() {
 		productContainer.removeAll();
 	}
 	
+	/**
+     * Adds a list of ProductSellerView instances to the product container for display.
+     *
+     * @param productViews The list of ProductSellerView instances to be added.
+     */
 	public void addProductViews(List<ProductSellerView> productViews) {
 		for (ProductSellerView view : productViews) {
 			productContainer.add(view);

@@ -7,14 +7,13 @@ import java.util.concurrent.CompletableFuture;
 import common.*;
 
 public class SignUpModel {
-    
-    /**
-     * Registers the provided username and password asynchronously.
-     *
-     * @param username The username to be registered.
-     * @param password The password associated with the username.
-     * @return A CompletableFuture<Boolean> representing the asynchronous registration process.
-     */
+	/**
+	 * Registers the provided user asynchronously.
+	 *
+	 * @param user The User object containing username and password to be registered.
+	 * @return A CompletableFuture<VerifyCredentialsResponse> representing the asynchronous registration process.
+	 *         The CompletableFuture will complete with a VerifyCredentialsResponse indicating success or failure.
+	 */
 	public CompletableFuture<VerifyCredentialsResponse> register(User user) {
         return CompletableFuture.supplyAsync(() -> {
             try {

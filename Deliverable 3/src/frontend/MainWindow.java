@@ -7,13 +7,22 @@ package frontend;
 import javax.swing.*;
 import frontend.Login.*;
 
+/**
+ * Represents the main window of the application and implements the IWrapper interface.
+ */
 public class MainWindow implements IWrapper {
 	private JFrame windowFrame;
 	private Object model, controller;
 	private JComponent view;
 	
-	public static MainWindow Instance; // Singleton pattern
+	/**
+     * Singleton instance of the MainWindow class.
+     */
+	public static MainWindow Instance;
 	
+	/**
+     * Private constructor to enforce the Singleton pattern and initialize the main window.
+     */
 	private MainWindow() {
 		windowFrame = new JFrame("CartSafari");
 		windowFrame.setSize(1200, 720);
@@ -28,17 +37,24 @@ public class MainWindow implements IWrapper {
 		changeMVC(loginModel, loginView, loginController);
 	}
 	
+	/**
+     * Initializes the application's main window and starts the application.
+     *
+     * @param args The command-line arguments.
+     */
 	public static void main(String[] args) {
 		Instance = new MainWindow();
 	}
 	
 	/**
-	 * Changes the current MVC to another MVC. 
-	 * Removes the old MVC from memory (unless stored elsewhere).
-	 * @param model The new Model component.
-	 * @param view The new View component (inherited from JComponent).
-	 * @param controller The new Controller component.
-	 */
+     * Changes the current Model-View-Controller (MVC) to another set of MVC components.
+     * Removes the old MVC from memory (unless stored elsewhere).
+     *
+     * @param model      The new Model component.
+     * @param view       The new View component (inherited from JComponent).
+     * @param controller The new Controller component.
+     */
+    @Override
 	public void changeMVC(Object model, JComponent view, Object controller) {
 		this.model = model;
 		this.controller = controller;
