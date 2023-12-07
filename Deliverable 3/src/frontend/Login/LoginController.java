@@ -38,7 +38,9 @@ public class LoginController {
      */
 	private void onLoginButtonClick() {
 		view.showBuffering();
-		User user = new Customer(view.getUsername(), view.getPassword());
+		User user = view.getUserType().equals("Customer") ? 
+        		new Customer(view.getUsername(), view.getPassword()) : 
+        		new Seller(view.getUsername(), view.getPassword());
 		
 		model.verifyCredentials(user)
 			.whenComplete((response, throwable) -> {
@@ -58,7 +60,7 @@ public class LoginController {
 						
 						if (response.user.getClass() == Customer.class) {
 							// Customer
-							Customer customer = new Customer(view.getUsername(), view.getPassword());
+							Customer customer = (Customer) user;
 							
 							MainScreenCustomerView mscView = new MainScreenCustomerView();
 							MainScreenCustomerModel mscModel = new MainScreenCustomerModel(customer);
@@ -67,7 +69,7 @@ public class LoginController {
 							lgwController.changeMVC(mscModel, mscView, mscController);
 						} else {
 							// Seller
-							Seller seller = new Seller(view.getUsername(), view.getPassword());
+							Seller seller = (Seller) user;
 							
 							MainScreenSellerView mssView = new MainScreenSellerView();
 							MainScreenSellerModel mssModel = new MainScreenSellerModel(seller);

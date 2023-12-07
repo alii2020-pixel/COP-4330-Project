@@ -4,6 +4,7 @@
 package frontend.Login;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -15,6 +16,7 @@ public class LoginView extends JComponent {
 	private JPasswordField passwordField;
 	private JButton loginButton;
 	private JButton signUpButton;
+	private JToggleButton userTypeButton;
 	
 	// for buffering symbol
 	private JProgressBar progressBar;
@@ -31,11 +33,25 @@ public class LoginView extends JComponent {
         loginButton = new JButton("Login");
         signUpButton = new JButton("Sign up");
 
+        userTypeButton = new JToggleButton("Customer");
+        userTypeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (userTypeButton.isSelected()) {
+                	userTypeButton.setText("Seller");
+                } else {
+                	userTypeButton.setText("Customer");
+                }
+            }
+        });
+        
         JPanel inputPanel = new JPanel(new GridLayout(0, 2, 5, 5)); // 0 rows for variable number of components
         inputPanel.add(new JLabel("Username:"));
         inputPanel.add(usernameField);
         inputPanel.add(new JLabel("Password:"));
         inputPanel.add(passwordField);
+        inputPanel.add(new JLabel("User type:"));
+        inputPanel.add(userTypeButton);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(loginButton);
@@ -135,6 +151,15 @@ public class LoginView extends JComponent {
 	public String getPassword() {
 		return new String(passwordField.getPassword());
 	}
+	
+	/**
+     * Retrieves the type of user selected (Customer or Seller) from the toggle button.
+     *
+     * @return The type of user selected.
+     */
+    public String getUserType() {
+    	return userTypeButton.getText();
+    }
 	
 	/**
      * Adds an ActionListener to the login button.
