@@ -1,3 +1,5 @@
+//MainScreenSellerView.java
+//Brandon Christian
 
 package frontend.MainScreenSeller;
 

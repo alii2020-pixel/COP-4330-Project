@@ -1,3 +1,6 @@
+//ProducModel.java
+//Brandon Christian
+
 package frontend.Product;
 
 public class ProductModel {

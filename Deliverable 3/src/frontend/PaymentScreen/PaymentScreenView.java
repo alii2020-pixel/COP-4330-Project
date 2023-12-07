@@ -1,3 +1,5 @@
+//PaymentScreenView.java
+//Brandon Christian
 package frontend.PaymentScreen;
 
 import java.awt.FlowLayout;

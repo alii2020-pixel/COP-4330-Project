@@ -1,10 +1,5 @@
-// package frontend.MainScreenSeller;
-
-// public class MainScreenSellerController {
-// 	public MainScreenSellerController(MainScreenSellerView view, MainScreenSellerModel model) {
-// 		// TODO: Implement
-// 	}
-// }
+//MainScreenSellerController.java
+//Brandon Christian
 
 package frontend.MainScreenSeller;
 import frontend.FinancialReportsScreen.FinancialReportsScreenController;

@@ -1,3 +1,5 @@
+//PaymentScreenModel.java
+//Brandon Christian
 package frontend.PaymentScreen;
 
 import java.util.HashSet;
@@ -8,7 +10,7 @@ import java.time.YearMonth;
 
 public class PaymentScreenModel {
     public boolean verifyPaymentDetails(String cardNumber, String expiryDate, String cvv) {
-        // Verify card number (must be 16 digits)
+        // Verify card number (must be 10 digits)
         if (!isValidCardNumber(cardNumber)) {
             return false;
         }
@@ -23,9 +25,11 @@ public class PaymentScreenModel {
         // Payment details are considered valid
         return true;
     }
+
     private boolean isValidCardNumber(String cardNumber) {
-        return cardNumber != null && cardNumber.matches("\\d{16}");
+        return cardNumber != null && cardNumber.matches("\\d{10}");
     }
+
     private boolean isValidExpiryDate(String expiryDate) {
         if (expiryDate == null || !expiryDate.matches("\\d{2}/\\d{2}")) {
             return false;
@@ -37,19 +41,22 @@ public class PaymentScreenModel {
         YearMonth inputYearMonth = YearMonth.of(year, month);
         return inputYearMonth.isAfter(currentYearMonth) && inputYearMonth.isBefore(currentYearMonth.plusYears(3));
     }
+
     private boolean isValidCVV(String cvv) {
         return cvv != null && cvv.matches("\\d{3}");
     }
+
     public boolean processTransaction(String cardNumber) {
-        // Check if cardNumber has 16 unique integers
+        // Check if cardNumber has 10 unique integers
         if (!hasUniqueIntegers(cardNumber)) {
-            System.out.println("Transaction failed. Card must have 16 unique integers.");
+            System.out.println("Transaction failed. Card must have 10 unique integers.");
             return false;
         }
-        // Couldn't think of a fail state so I figured the 16 integers for a card need to be different and not just the same number repeating 
+        // Couldn't think of a fail state so I figured the 10 integers for a card need to be different and not just the same number repeating 
         System.out.println("Transaction successful.");
         return true;
     }
+
     private boolean hasUniqueIntegers(String cardNumber) {
         Set<Character> uniqueDigits = new HashSet<>();
         for (char digit : cardNumber.toCharArray()) {
@@ -59,8 +66,10 @@ public class PaymentScreenModel {
         }
         return true;
     }
+
     public boolean processTransaction() {
         return false;
     }
 }
+
 

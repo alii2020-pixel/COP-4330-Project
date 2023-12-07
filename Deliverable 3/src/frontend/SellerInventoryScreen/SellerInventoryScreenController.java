@@ -12,5 +12,5 @@ public class SellerInventoryScreenController {
         // Implement the logic to show the seller inventory screen
         System.out.println("Showing Seller Inventory Screen");
     }
-    // Other methods and logic related to the seller inventory screen
+    
 }

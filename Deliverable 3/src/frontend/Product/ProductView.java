@@ -1,3 +1,5 @@
+//ProducView.java
+//Brandon Christian
 
 package frontend.Product;
 import javax.swing.JComponent;
