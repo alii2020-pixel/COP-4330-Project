@@ -53,7 +53,7 @@ public class ProductSellerController {
 	}
 	
 	private void onDescriptionFieldEdit() {
-		model.getProduct().setName(view.getDescriptionFieldText());
+		model.getProduct().setDescription(view.getDescriptionFieldText());
 	}
 	
 	private void onPriceFieldEdit() {
