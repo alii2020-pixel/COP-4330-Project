@@ -53,8 +53,14 @@ public class SignUpController {
 							lgwController.changeMVC(mscModel, mscView, mscController);
 						} else {
 							// Seller
+							Seller seller = (Seller) user;
+							seller.addProduct(new Product("test 1", "lol", 0.0));
+							seller.addProduct(new Product("test 2", "lol", 10.0));
+							seller.addProduct(new Product("test 3", "lol", 20.0));
+							seller.addProduct(new Product("test 4", "lol", 30.0));
+							
 							MainScreenSellerView mssView = new MainScreenSellerView();
-							MainScreenSellerModel mssModel = new MainScreenSellerModel((Seller) user);
+							MainScreenSellerModel mssModel = new MainScreenSellerModel(seller);
 							MainScreenSellerController mssController = new MainScreenSellerController(mssView, mssModel);
 							
 							lgwController.changeMVC(mssView, mssView, mssController);

@@ -11,5 +11,8 @@ public class MainScreenSellerModel {
 	public MainScreenSellerModel(Seller seller) {
 		this.seller = seller;
 	}
-
+	
+	public Seller getSeller() {
+		return seller;
+	}
 }

@@ -8,6 +8,12 @@ public class Product {
 	private String description;
 	private double price;
 	
+	public Product() {
+		name = "";
+		description = "";
+		price = 0;
+	}
+	
 	public Product(String name, String description, double price) {
 		this.name = name;
 		this.description = description;
@@ -24,5 +30,17 @@ public class Product {
 	
 	public double getPrice() {
 		return price;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

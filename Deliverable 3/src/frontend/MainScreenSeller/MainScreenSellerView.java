@@ -3,12 +3,7 @@
 
 package frontend.MainScreenSeller;
 
-import frontend.SellerInventoryScreen.SellerInventoryScreenView;
-import frontend.FinancialReportsScreen.FinancialReportsScreenView;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
