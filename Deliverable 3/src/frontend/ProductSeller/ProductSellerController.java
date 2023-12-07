@@ -68,7 +68,6 @@ public class ProductSellerController {
 
         if (matcher.find()) {
             String numberStr = matcher.group(); // Get the matched number string
-            System.out.println(numberStr);
             return Double.parseDouble(numberStr); // Convert the string to a double
         }
 
