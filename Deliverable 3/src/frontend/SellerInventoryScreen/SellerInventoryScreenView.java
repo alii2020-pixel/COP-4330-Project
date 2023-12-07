@@ -29,8 +29,12 @@ public class SellerInventoryScreenView extends JComponent {
     	buttonContainer.add(Box.createRigidArea(new Dimension(10, 0)));
     	buttonContainer.add(addProductButton);
     	
+    	JScrollPane scrollPane = new JScrollPane(productContainer);
+    	scrollPane.setPreferredSize(new Dimension(1100, 600));
+    	scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    	
     	allContainer.add(buttonContainer, BorderLayout.NORTH);
-    	allContainer.add(productContainer);
+    	allContainer.add(scrollPane);
     	
     	add(allContainer);
     	

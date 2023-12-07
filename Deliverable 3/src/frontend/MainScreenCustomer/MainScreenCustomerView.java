@@ -21,8 +21,12 @@ public class MainScreenCustomerView extends JComponent {
     	
     	shoppingCartButton = new JButton("View Shopping Cart");
     	
+    	JScrollPane scrollPane = new JScrollPane(productContainer);
+    	scrollPane.setPreferredSize(new Dimension(1100, 600));
+    	scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    	
     	allContainer.add(shoppingCartButton, BorderLayout.NORTH);
-    	allContainer.add(productContainer);
+    	allContainer.add(scrollPane);
     	
     	add(allContainer);
     	
