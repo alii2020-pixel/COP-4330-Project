@@ -70,4 +70,11 @@ public class ShoppingCart {
 	public Integer getCount(int index) {
 		return counts.get(index);
 	}
+	
+	public Integer getCount(Product product) {
+		int productIndex = products.indexOf(product);
+		
+		if (productIndex == -1) return 0;
+		return counts.get(productIndex);
+	}
 }
