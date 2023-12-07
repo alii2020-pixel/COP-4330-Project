@@ -2,6 +2,7 @@ package frontend.Product;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ProductView extends JComponent {
@@ -56,5 +57,13 @@ public class ProductView extends JComponent {
     
     public void setCountLabelText(String text) {
     	countLabel.setText(text);
+    }
+    
+    public void addIncrementButtonListener(ActionListener listener) {
+    	incrementButton.addActionListener(listener);
+    }
+    
+    public void addDecrementButtonListener(ActionListener listener) {
+    	decrementButton.addActionListener(listener);
     }
 }

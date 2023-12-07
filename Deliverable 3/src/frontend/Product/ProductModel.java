@@ -4,13 +4,11 @@ import common.*;
 
 public class ProductModel {
     private Product product;
-    private int productCount;
     private ShoppingCart shoppingCart;
 
     public ProductModel(Product product, ShoppingCart shoppingCart) {
     	this.product = product;
     	this.shoppingCart = shoppingCart;
-    	productCount = shoppingCart.getCount(product);
     }
 
     public Product getProduct() {
@@ -18,7 +16,7 @@ public class ProductModel {
     }
     
     public int getCount() {
-    	return productCount;
+    	return shoppingCart.getCount(product);
     }
     
     /**
