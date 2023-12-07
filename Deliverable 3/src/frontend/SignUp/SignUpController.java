@@ -2,6 +2,9 @@ package frontend.SignUp;
 
 import javax.swing.SwingUtilities;
 
+import frontend.MainWindow;
+import frontend.Login.*;
+
 public class SignUpController {
     SignUpModel model;
     SignUpView view;
@@ -11,6 +14,8 @@ public class SignUpController {
         this.view = view;
 
         view.addSignUpButtonListener(e -> onSignUpButtonClick());
+        
+        view.addLoginButtonListener(e -> onLoginButtonClick());
     }
 
     private void onSignUpButtonClick() {
@@ -30,5 +35,14 @@ public class SignUpController {
                     view.hideBuffering();
                 });
             });
+    }
+    
+    private void onLoginButtonClick() {
+    	// navigate to Login
+    	LoginView loginView = new LoginView();
+    	LoginModel loginModel = new LoginModel();
+    	LoginController loginController = new LoginController(loginModel, loginView);
+    			
+    	MainWindow.Instance.changeMVC(loginModel, loginView, loginController);
     }
 }

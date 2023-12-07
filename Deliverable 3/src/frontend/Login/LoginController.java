@@ -1,3 +1,6 @@
+// LoginController.java
+// Ethan Curtis
+
 package frontend.Login;
 
 import javax.swing.SwingUtilities;
@@ -43,14 +46,14 @@ public class LoginController {
 							MainScreenCustomerModel mscModel = new MainScreenCustomerModel();
 							MainScreenCustomerController mscController = new MainScreenCustomerController(mscView, mscModel);
 							
-							LogoutWrapperView.Instance.changeMVC(mscModel, mscView, mscController);
+							lgwController.changeMVC(mscModel, mscView, mscController);
 						} else {
 							// Seller
 							MainScreenSellerView mssView = new MainScreenSellerView();
 							MainScreenSellerModel mssModel = new MainScreenSellerModel();
 							MainScreenSellerController mssController = new MainScreenSellerController(mssView, mssModel);
 							
-							LogoutWrapperView.Instance.changeMVC(mssView, mssView, mssController);
+							lgwController.changeMVC(mssView, mssView, mssController);
 						}
 						
 						MainWindow.Instance.changeMVC(lgwModel, lgwView, lgwController);

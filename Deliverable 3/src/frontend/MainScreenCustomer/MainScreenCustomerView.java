@@ -1,69 +1,55 @@
-// package frontend.MainScreenCustomer;
-
-// import javax.swing.JComponent;
-
-// public class MainScreenCustomerView extends JComponent {
-
-// }
+// MainScreenCustomerView.java
+// Ethan Curtis
 
 package frontend.MainScreenCustomer;
 
 import javax.swing.*;
-
-import frontend.Product.ProductController;
-import frontend.Product.ProductModel;
-
+import frontend.Product.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class MainScreenCustomerView extends JComponent {
-
-    private JList<String> productList;
-
-    private ProductController controller;
-
+	private JPanel productContainer;
+	private JButton shoppingCartButton;
+	
     public MainScreenCustomerView() {
-        initComponents();
-        setVisible(true);
+    	JPanel allContainer = new JPanel();
+    	allContainer.setLayout(new BoxLayout(allContainer, BoxLayout.X_AXIS));
+    	
+    	productContainer = new JPanel();
+    	productContainer.setLayout(new BoxLayout(productContainer, BoxLayout.Y_AXIS));
+    	
+    	shoppingCartButton = new JButton("SHOPPING CART");
+    	
+    	allContainer.add(productContainer);
+    	allContainer.add(shoppingCartButton);
+    	
+    	add(allContainer);
+    	
+    	setLayout(new FlowLayout());
+    	setVisible(true);
     }
-
-    private void initComponents() {
-        productList = new JList<>();
-        JScrollPane scrollPane = new JScrollPane(productList);
-
-        setLayout(new BorderLayout());
-        add(scrollPane, BorderLayout.CENTER);
+    
+    public void addProductView(ProductView productView) {
+    	productContainer.add(productView);
+    	revalidate();
+    	repaint();
     }
-
-    public void setController(ProductController controller) {
-        this.controller = controller;
+    
+    public void addProductViews(List<ProductView> productViews) {
+    	for (ProductView view : productViews) {
+    		productContainer.add(view);
+    	}
+    	revalidate();
+    	repaint();
     }
-
-    public void updateProductList(List<String> products) {
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        for (String product : products) {
-            listModel.addElement(product);
-        }
-        productList.setModel(listModel);
+    
+    public void resetProductContainer() {
+    	productContainer.removeAll();
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                MainScreenCustomerView view = new MainScreenCustomerView();
-                ProductModel model = new ProductModel();
-                ProductController controller = new ProductController(view, model);
-                view.setController(controller);
-
-                // For testing, add the view to a JFrame
-                JFrame frame = new JFrame();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(400, 300);
-                frame.setLocationRelativeTo(null);
-                frame.add(view);
-                frame.setVisible(true);
-            }
-        });
+    
+    public void addShoppingCartButtonListener(ActionListener listener) {
+    	shoppingCartButton.addActionListener(listener);
     }
 }

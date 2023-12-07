@@ -8,13 +8,15 @@ public class SignUpView extends JComponent {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton signUpButton;
+    private JButton loginButton;
     private JProgressBar progressBar;
     private JFrame failureFrame;
 
     public SignUpView() {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
-        signUpButton = new JButton("Sign Up");
+        signUpButton = new JButton("Sign up");
+        loginButton = new JButton("Login");
 
         JPanel inputPanel = new JPanel(new GridLayout(0, 2, 5, 5)); //0 rows for variable number of components
         inputPanel.add(new JLabel("Username:"));
@@ -24,6 +26,7 @@ public class SignUpView extends JComponent {
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(signUpButton);
+        buttonPanel.add(loginButton);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -107,6 +110,19 @@ public class SignUpView extends JComponent {
         return new String(passwordField.getPassword());
     }
 
+    /**
+	 * Adds an ActionListener to the login button.
+	 * @param listener Listener to add to the sign up button.
+	 */
+	public void addLoginButtonListener(ActionListener listener) {
+		loginButton.addActionListener(listener);
+	}
+    
+	
+	/**
+	 * Adds an ActionListener to the sign up button.
+	 * @param listener Listener to add to the sign up button.
+	 */
     public void addSignUpButtonListener(ActionListener listener) {
         signUpButton.addActionListener(listener);
     }

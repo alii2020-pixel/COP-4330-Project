@@ -1,3 +1,6 @@
+// IWrapper.java
+// Ethan Curtis
+
 package frontend;
 
 import javax.swing.JComponent;

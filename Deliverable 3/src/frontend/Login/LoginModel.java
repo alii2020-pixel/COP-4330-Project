@@ -1,3 +1,6 @@
+// LoginModel.java
+// Ethan Curtis
+
 package frontend.Login;
 
 import java.util.concurrent.CompletableFuture;
