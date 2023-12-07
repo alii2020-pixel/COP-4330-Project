@@ -1,22 +1,37 @@
 package frontend.Product;
 
-import common.Product;
+import common.*;
 
 public class ProductModel {
     private Product product;
+    private int productCount;
+    private ShoppingCart shoppingCart;
 
-    public ProductModel(Product product) {
+    public ProductModel(Product product, ShoppingCart shoppingCart) {
     	this.product = product;
+    	this.shoppingCart = shoppingCart;
+    	productCount = shoppingCart.getCount(product);
     }
 
     public Product getProduct() {
     	return product;
     }
     
+    public int getCount() {
+    	return productCount;
+    }
+    
     /**
-     * Adds this product to the shopping cart.
+     * Increments product in cart.
      */
-    public void addToCart() {
-    	// Adds this product to the cart
+    public void incrementToCart() {
+    	shoppingCart.incrementProduct(product);
+    }
+    
+    /**
+     * Decrements product in cart.
+     */
+    public void decrementFromCart() {
+    	shoppingCart.decrementProduct(product);
     }
 }
