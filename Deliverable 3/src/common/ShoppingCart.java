@@ -119,4 +119,9 @@ public class ShoppingCart {
 	public void removeCartUpdatedListener(ActionListener listener) {
 		cartUpdatedListeners.remove(listener);
 	}
+	
+	public void removeAllProducts() {
+		products = new LinkedList<>();
+		counts = new LinkedList<>();
+	}
 }

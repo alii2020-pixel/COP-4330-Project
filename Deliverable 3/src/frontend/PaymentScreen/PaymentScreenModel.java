@@ -21,16 +21,18 @@ public class PaymentScreenModel {
 	}
 	
     public boolean verifyPaymentDetails(String cardNumber, String expiryDate, String cvv) {
+    	// testing REMOVE LATER
+    	
         // Verify card number (must be 16 digits)
-        if (!isValidCardNumber(cardNumber)) {
+        if (!isValidCardNumber(cardNumber) && false) {
             return false;
         }
         // Verify expiration date (must be in "MM/YY" format and between 2023 and 2026)
-        if (!isValidExpiryDate(expiryDate)) {
+        if (!isValidExpiryDate(expiryDate) && false) {
             return false;
         }
         // Verify CVV (must be 3 digits)
-        if (!isValidCVV(cvv)) {
+        if (!isValidCVV(cvv) && false) {
             return false;
         }
         // Payment details are considered valid
@@ -79,7 +81,7 @@ public class PaymentScreenModel {
     }
     
     public boolean processTransaction() {
-        return false;
+        return true;
     }
 }
 

@@ -1,8 +1,13 @@
+// PaymentScreenController.java
+
 package frontend.PaymentScreen;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
+import frontend.LogoutWrapper.LogoutWrapperController;
+import frontend.ShipmentScreen.*;
 
 public class PaymentScreenController {
     private PaymentScreenView view;
@@ -17,6 +22,7 @@ public class PaymentScreenController {
         
         view.setTotalCostLabelText(String.format("Total cost: $%.2f", model.getCustomer().getShoppingCart().getCartTotal()));
     }
+    
     private class SubmitButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -31,6 +37,10 @@ public class PaymentScreenController {
                 boolean transactionSuccess = model.processTransaction();
                 if (transactionSuccess) {
                     JOptionPane.showMessageDialog(view, "Payment successful!");
+                    
+                    model.getCustomer().getShoppingCart().removeAllProducts();
+                    
+                    switchToShipmentScreen();
                 } else {
                     JOptionPane.showMessageDialog(view, "Transaction failed. Please try again.");
                 }
@@ -38,6 +48,12 @@ public class PaymentScreenController {
                 JOptionPane.showMessageDialog(view, "Invalid payment details. Please check and try again.");
             }
         }
+    }
+    
+    private void switchToShipmentScreen() {
+    	ShipmentScreenView view = new ShipmentScreenView();
+    	ShipmentScreenModel model = new ShipmentScreenModel(this.model.getCustomer());
+    	LogoutWrapperController.Instance.changeMVC(model, view, new ShipmentScreenController(view, model));
     }
 }
 

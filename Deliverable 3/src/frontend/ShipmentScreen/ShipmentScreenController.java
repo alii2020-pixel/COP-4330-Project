@@ -2,15 +2,19 @@ package frontend.ShipmentScreen;
 
 import javax.swing.SwingUtilities;
 
+import frontend.LogoutWrapper.LogoutWrapperController;
+import frontend.MainScreenCustomer.*;
+
 public class ShipmentScreenController {
     private ShipmentScreenModel model;
     private ShipmentScreenView view;
 
-    public ShipmentScreenController(ShipmentScreenModel model, ShipmentScreenView view) {
+    public ShipmentScreenController(ShipmentScreenView view, ShipmentScreenModel model) {
         this.model = model;
         this.view = view;
 
         view.addHomeButtonListener(e -> onHomeButtonClick());
+        displayShipmentDetails();
     }
 
     public void displayShipmentDetails() {
@@ -22,6 +26,8 @@ public class ShipmentScreenController {
 
     private void onHomeButtonClick() {
         // Return to home screen
-        System.out.println("Displaying home screen");
+    	MainScreenCustomerView view = new MainScreenCustomerView();
+		MainScreenCustomerModel model = new MainScreenCustomerModel(this.model.getCustomer());
+		LogoutWrapperController.Instance.changeMVC(model, view, new MainScreenCustomerController(view, model));
     }
 }
