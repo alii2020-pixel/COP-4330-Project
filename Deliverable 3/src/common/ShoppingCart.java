@@ -3,20 +3,24 @@
 
 package common;
 
+import java.awt.event.ActionListener;
 import java.util.*;
 
 public class ShoppingCart {
 	private List<Product> products;
 	private List<Integer> counts;
+	private List<ActionListener> cartUpdatedListeners;
 	
 	public ShoppingCart() {
 		products = new LinkedList<>();
 		counts = new LinkedList<>();
+		cartUpdatedListeners = new LinkedList<>();
 	}
 	
 	public ShoppingCart(Map<Product, Integer> items) {
 		products = new LinkedList<>();
 		counts = new LinkedList<>();
+		cartUpdatedListeners = new LinkedList<>();
 		
 		for (Product product : items.keySet()) {
 			int count = items.get(product);
@@ -30,6 +34,7 @@ public class ShoppingCart {
 	public ShoppingCart(List<Product> products, List<Integer> counts) {
 		this.products = products;
 		this.counts = counts;
+		cartUpdatedListeners = new LinkedList<>();
 	}
 
 	public boolean contains(Product product) {
@@ -46,6 +51,8 @@ public class ShoppingCart {
 			products.add(product);
 			counts.add(1);
 		}
+		
+		cartUpdatedEvent();
 	}
 	
 	public void decrementProduct(Product product) {
@@ -60,11 +67,17 @@ public class ShoppingCart {
 			else {
 				counts.set(productIndex, count);
 			}
+			
+			cartUpdatedEvent();
 		}
 	}
 	
 	public Product getProduct(int index) {
 		return products.get(index);
+	}
+	
+	public List<Product> getProducts() {
+		return products;
 	}
 	
 	public Integer getCount(int index) {
@@ -76,5 +89,34 @@ public class ShoppingCart {
 		
 		if (productIndex == -1) return 0;
 		return counts.get(productIndex);
+	}
+	
+	public double getCartTotal() {
+		double total = 0;
+		
+		for (int i = 0; i < products.size(); i++) {
+			total += products.get(i).getPrice() * counts.get(i);
+ 		}
+		
+		return total;
+	}
+	
+	private void cartUpdatedEvent() {
+		for (ActionListener listener : cartUpdatedListeners) {
+			if (listener == null) {
+				cartUpdatedListeners.remove(listener);
+				continue;
+			}
+			
+			listener.actionPerformed(null);
+		}
+	}
+	
+	public void addCartUpdatedListener(ActionListener listener) {
+		cartUpdatedListeners.add(listener);
+	}
+	
+	public void removeCartUpdatedListener(ActionListener listener) {
+		cartUpdatedListeners.remove(listener);
 	}
 }
