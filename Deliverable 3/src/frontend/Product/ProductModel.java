@@ -1,25 +1,22 @@
 package frontend.Product;
 
+import common.Product;
+
 public class ProductModel {
-    private String productName;
-    private double price;
-    
-    public ProductModel(String productName, double price) {
-        this.productName = productName;
-        this.price = price;
-        
+    private Product product;
+
+    public ProductModel(Product product) {
+    	this.product = product;
     }
-    public String getProductName() {
-        return productName;
-    }
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
+
+    public Product getProduct() {
+    	return product;
     }
     
+    /**
+     * Adds this product to the shopping cart.
+     */
+    public void addToCart() {
+    	// Adds this product to the cart
+    }
 }
