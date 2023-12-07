@@ -13,11 +13,17 @@ public class MainScreenCustomerModel {
 		shoppingCart = new ShoppingCart(); // TODO: SWITCH TO LOADING FROM SERVER?
 	}
 	
+	public MainScreenCustomerModel(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+	
 	public ShoppingCart getShoppingCart() {
 		return shoppingCart;
 	}
 	
 	public List<Product> getProducts() {
+		// TODO: LOAD ACTUAL LIST OF ALL PRODUCTS
+		
 		return new LinkedList<Product>(Arrays.asList(
 			new Product("Item 1", "An item you can buy", 100.00),
 			new Product("Item 2", "Another item you can buy", 200.00),

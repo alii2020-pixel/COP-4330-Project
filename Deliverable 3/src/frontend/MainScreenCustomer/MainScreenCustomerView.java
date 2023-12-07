@@ -19,7 +19,7 @@ public class MainScreenCustomerView extends JComponent {
     	
     	productContainer = new JPanel(new GridLayout(0, 3, 10, 10));
     	
-    	shoppingCartButton = new JButton("SHOPPING CART");
+    	shoppingCartButton = new JButton("View Shopping Cart");
     	
     	allContainer.add(shoppingCartButton, BorderLayout.NORTH);
     	allContainer.add(productContainer);

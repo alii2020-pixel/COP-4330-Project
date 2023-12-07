@@ -32,6 +32,8 @@ public class MainScreenCustomerController {
 			
 			ProductModel pModel = new ProductModel(product, model.getShoppingCart());
 			
+			pView.setCountLabelText(Integer.toString(pModel.getCount()) + " item(s) in cart.");
+			
 			ProductController pController = new ProductController(pView, pModel);
 			pControllers.add(pController);
 		}
@@ -45,7 +47,7 @@ public class MainScreenCustomerController {
 		// navigate to shopping cart page
 		
 		ShoppingCartScreenView view = new ShoppingCartScreenView();
-		ShoppingCartScreenModel model = new ShoppingCartScreenModel();
+		ShoppingCartScreenModel model = new ShoppingCartScreenModel(this.model.getShoppingCart());
 		LogoutWrapperController.Instance.changeMVC(model, view, new ShoppingCartScreenController(view, model));
 	}
 }
